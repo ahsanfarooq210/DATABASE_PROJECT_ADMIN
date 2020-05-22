@@ -109,7 +109,7 @@
                         android:id="@+id/dashboard_show_order"
                         android:layout_width="160dp"
                         android:layout_height="190dp"
-
+                        android:onClick="showOrder"
                         android:layout_margin="10dp"
                         app:cardBackgroundColor="@color/colorPrimary"
                         app:cardCornerRadius="20dp">

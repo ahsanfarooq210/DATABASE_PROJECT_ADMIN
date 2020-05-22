@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".add_salesman_activity"></activity>
+        <activity android:name=".show_order_activity"></activity>
+        <activity android:name=".add_salesman_activity" />
         <activity android:name=".admin_main_dashboard" />
         <activity android:name=".MainActivity">
             <intent-filter>

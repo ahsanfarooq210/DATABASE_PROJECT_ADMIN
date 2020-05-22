@@ -2,6 +2,7 @@ package com.example.database_project_admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -17,6 +18,10 @@ public class admin_main_dashboard extends AppCompatActivity
 
     public void addSalesman(View view)
     {
+        startActivity(new Intent(admin_main_dashboard.this,add_salesman_activity.class));
+    }
 
+    public void showOrder(View view)
+    {
     }
 }

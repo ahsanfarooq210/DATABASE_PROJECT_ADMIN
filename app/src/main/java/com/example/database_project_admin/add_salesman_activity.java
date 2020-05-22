@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -95,11 +96,12 @@ public class add_salesman_activity extends AppCompatActivity
 
         progressBar.setVisibility(View.VISIBLE);
         String username=usernameTf.getText().toString().trim(),password=passwordTf.getText().toString().trim();
+        createSalesman(username,password);
 
 
     }
 
-    public void createSalesman(String email,String password)
+    public void createSalesman(String email, final String password)
     {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -108,11 +110,15 @@ public class add_salesman_activity extends AppCompatActivity
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             progressBarh.postDelayed(runnable1,100);
-                            
+                            usernameTf.setText("");
+                            passwordTf.setText("");
+                            confirmPasswordTf.setText("");
+                            Toast.makeText(add_salesman_activity.this, "salesman created successfully", Toast.LENGTH_SHORT).show();
 
                         } else {
                             // If sign in fails, display a message to the user.
                             progressBarh.postDelayed(runnable1,100);
+                            Toast.makeText(add_salesman_activity.this, "error in creating the salesman\nEnter again", Toast.LENGTH_SHORT).show();
 
                         }
 
