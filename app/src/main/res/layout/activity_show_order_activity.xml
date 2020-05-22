@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".show_order_activity">
+    tools:context=".show_order_activity"
+    android:animateLayoutChanges="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:id="@+id/main_dashboard_container"/>
+
+    <com.luseen.spacenavigation.SpaceNavigationView
+        android:id="@+id/space"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="0dp"
+        app:active_item_color="@android:color/holo_blue_bright"
+        app:centre_button_color="@color/crimson"
+        app:inactive_item_color="@android:color/white"
+        app:space_background_color="@color/colorPrimary"
+        app:space_item_icon_only_size="@dimen/space_item_icon_only_size"
+        app:space_item_icon_size="25dp"
+        app:space_item_text_size="@dimen/space_item_text_default_size" />
+
+</RelativeLayout>
