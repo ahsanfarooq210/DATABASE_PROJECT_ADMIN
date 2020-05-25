@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        android:id="@+id/main_dashboard_container"/>
+        android:id="@+id/show_order_filter_framelayout"/>
 
     <com.luseen.spacenavigation.SpaceNavigationView
         android:id="@+id/space"
