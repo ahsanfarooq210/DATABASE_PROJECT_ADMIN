@@ -7,12 +7,21 @@
     android:animateLayoutChanges="true">
 
     <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:animateLayoutChanges="true"
+        android:id="@+id/upper_linear_layout">
 
     <Spinner
-        android:id="@+id/salesman_filter_et"
-        android:layout_width="match_parent"
+        android:id="@+id/salesman_filter_spinner"
+        android:layout_width="0dp"
+        android:layout_weight="4"
         android:inputType="textEmailAddress"
         android:layout_height="40dp"
+        android:focusable="true"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
@@ -22,11 +31,29 @@
         android:paddingRight="15dp"
         android:textColor="@android:color/white"
         android:textSize="15sp" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+
+
+            android:clickable="true"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/btn_bg"
+            android:fontFamily="sans-serif-medium"
+            android:paddingLeft="70dp"
+            android:paddingRight="70dp"
+            android:id="@+id/serch_btn"
+            android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/salesman_filter_et"
+        android:layout_below="@+id/upper_linear_layout"
         android:layout_marginRight="10dp"
+        android:id="@+id/filter_salesman_recycler_view"
         android:layout_marginLeft="10dp"/>
 
 </RelativeLayout>

@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class add_salesman_activity extends AppCompatActivity
 {
@@ -45,6 +47,7 @@ public class add_salesman_activity extends AppCompatActivity
             progressBar.setVisibility(View.GONE);
         }
     };
+    private DatabaseReference salesmanReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -65,7 +68,8 @@ public class add_salesman_activity extends AppCompatActivity
 
         progressBar=findViewById(R.id.my_progress_bar);
         progressBarh.postDelayed(runnable1,100);
-
+        salesmanReference= FirebaseDatabase.getInstance().getReference("SALESMAN_USERNAME");
+        salesmanReference.keepSynced(true);
 
     }
 
@@ -101,7 +105,7 @@ public class add_salesman_activity extends AppCompatActivity
 
     }
 
-    public void createSalesman(String email, final String password)
+    public void createSalesman(final String email, final String password)
     {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -114,6 +118,10 @@ public class add_salesman_activity extends AppCompatActivity
                             passwordTf.setText("");
                             confirmPasswordTf.setText("");
                             Toast.makeText(add_salesman_activity.this, "salesman created successfully", Toast.LENGTH_SHORT).show();
+                            String id=salesmanReference.push().getKey();
+                            SalesmanId salesman=new SalesmanId(id,email,password);
+                            salesmanReference.child(id).setValue(salesman);
+
 
                         } else {
                             // If sign in fails, display a message to the user.

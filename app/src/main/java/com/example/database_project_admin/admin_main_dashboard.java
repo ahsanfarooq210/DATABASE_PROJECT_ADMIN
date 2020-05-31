@@ -23,5 +23,6 @@ public class admin_main_dashboard extends AppCompatActivity
 
     public void showOrder(View view)
     {
+        startActivity(new Intent(admin_main_dashboard.this,show_order_activity.class));
     }
 }

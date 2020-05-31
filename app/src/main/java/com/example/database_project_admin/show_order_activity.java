@@ -55,6 +55,10 @@ public class show_order_activity extends AppCompatActivity
                     {
                         getSupportFragmentManager().beginTransaction().replace(R.id.show_order_filter_framelayout,new show_order_filter_sku()).commit();
                     }
+                    else
+                    {
+                        getSupportFragmentManager().beginTransaction().replace(R.id.show_order_filter_framelayout,new show_order_filter_sku()).commit();
+                    }
                 }
             }
 
