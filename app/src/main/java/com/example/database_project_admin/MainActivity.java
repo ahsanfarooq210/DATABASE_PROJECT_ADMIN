@@ -3,12 +3,14 @@ package com.example.database_project_admin;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -94,12 +96,14 @@ public class MainActivity extends AppCompatActivity
                         {
                             // Sign in success, update UI with the signed-in user's information
                             progressBarh.postDelayed(runnable1,100);
+                            startActivity(new Intent(MainActivity.this,admin_main_dashboard.class));
 
                         }
                         else
                             {
                             // If sign in fails, display a message to the user.
                                 progressBarh.postDelayed(runnable1,100);
+                                Toast.makeText(MainActivity.this, "Signin failed", Toast.LENGTH_SHORT).show();
 
                             }
 
