@@ -4,6 +4,10 @@ public class SalesmanId
 {
     private String id,email,password;
 
+    public SalesmanId()
+    {
+    }
+
     public SalesmanId(String id, String email, String password)
     {
         this.id = id;
@@ -39,5 +43,10 @@ public class SalesmanId
     public void setPassword(String password)
     {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return email;
     }
 }

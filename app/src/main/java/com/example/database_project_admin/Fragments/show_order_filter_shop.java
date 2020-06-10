@@ -74,10 +74,10 @@ public class show_order_filter_shop extends Fragment
             @Override
             public void onClick(View v)
             {
-                ShopDetails shopDetails= (ShopDetails) shopSpinner.getSelectedItem();
+                final ShopDetails shopDetails= (ShopDetails) shopSpinner.getSelectedItem();
 
 
-                Query query=FirebaseDatabase.getInstance().getReference("ORDERS").orderByChild("shop").equalTo(String.valueOf(shopDetails));
+                Query query=FirebaseDatabase.getInstance().getReference("ORDERS").orderByChild("shop");
 
                 query.addListenerForSingleValueEvent(new ValueEventListener()
                 {
@@ -88,6 +88,7 @@ public class show_order_filter_shop extends Fragment
                         orderList.clear();
                         for(DataSnapshot shop:dataSnapshot.getChildren())
                         {
+                            if(shop.getValue(Orders.class).getShop().getId().equals(shopDetails.getId()))
                             orderList.add(shop.getValue(Orders.class));
                         }
                         show_order_rv_adaprter showOrderRvAdaprter=new show_order_rv_adaprter((ArrayList<Orders>) orderList,  getActivity());

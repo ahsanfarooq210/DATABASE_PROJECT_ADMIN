@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -63,15 +64,16 @@ public class show_order_filter_sku extends Fragment
         skuArrayAdapter.setDropDownViewResource(R.layout.spinner_text_dropdown);
         orderList=new ArrayList<>();
         recyclerView=v.findViewById(R.id.filter_sku_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         searchBtn.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                Sku sku= (Sku) skuSpinner.getSelectedItem();
+                final Sku sku= (Sku) skuSpinner.getSelectedItem();
 
-                Query query=FirebaseDatabase.getInstance().getReference("ORDERS").orderByChild("sku").equalTo(String.valueOf(sku));
+                Query query=FirebaseDatabase.getInstance().getReference("ORDERS").orderByChild("sku");
 
                 query.addListenerForSingleValueEvent(new ValueEventListener()
                 {
@@ -82,6 +84,7 @@ public class show_order_filter_sku extends Fragment
                         orderList.clear();
                         for(DataSnapshot shop:dataSnapshot.getChildren())
                         {
+                           if(shop.getValue(Orders.class).getSku().getId().equals(sku.getId()))
                             orderList.add(shop.getValue(Orders.class));
                         }
                         show_order_rv_adaprter showOrderRvAdaprter=new show_order_rv_adaprter((ArrayList<Orders>) orderList,  getActivity());

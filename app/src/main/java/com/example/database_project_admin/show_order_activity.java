@@ -47,13 +47,13 @@ public class show_order_activity extends AppCompatActivity
             {
                 if(itemIndex==0)
                 {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.show_order_filter_framelayout,new show_order_filter_shop()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.show_order_filter_framelayout,new show_order_filter_sku()).commit();
                 }
                 else
                 {
                     if(itemIndex==1)
                     {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.show_order_filter_framelayout,new show_order_filter_sku()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.show_order_filter_framelayout,new show_order_filter_shop()).commit();
                     }
                     else
                     {

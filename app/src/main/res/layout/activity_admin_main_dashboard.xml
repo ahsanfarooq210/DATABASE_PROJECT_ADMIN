@@ -36,7 +36,7 @@
             android:layout_below="@+id/dashboard_name_plate"
             android:id="@+id/dashboard_scroll_view"
             android:animateLayoutChanges="true"
-            android:visibility="gon">
+            android:visibility="gone">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

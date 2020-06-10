@@ -123,7 +123,7 @@ public class show_order_filter_salesman extends Fragment
                 salesmanIdList.clear();
                 for(DataSnapshot snapshot:dataSnapshot.getChildren())
                 {
-                    salesmanIdList.add(dataSnapshot.getValue(SalesmanId.class));
+                    salesmanIdList.add(snapshot.getValue(SalesmanId.class));
                 }
                 salesmanSpinner.setAdapter(salesmanAdapter);
             }
