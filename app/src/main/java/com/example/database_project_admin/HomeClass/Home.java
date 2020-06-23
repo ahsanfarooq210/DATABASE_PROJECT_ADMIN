@@ -1,8 +1,10 @@
-package com.example.database_project_admin;
+package com.example.database_project_admin.HomeClass;
 
 import android.app.Application;
 import android.content.Intent;
 
+import com.example.database_project_admin.Activities.MainActivity;
+import com.example.database_project_admin.Activities.admin_main_dashboard;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
@@ -22,14 +24,14 @@ public class Home extends Application
         if(firebaseUser!=null)
         {
 
-            Intent intent=new Intent(Home.this,admin_main_dashboard.class);
+            Intent intent=new Intent(Home.this, admin_main_dashboard.class);
 
             startActivity(intent);
         }
         else
         {
 
-            Intent intent=new Intent(Home.this,MainActivity.class);
+            Intent intent=new Intent(Home.this, MainActivity.class);
             startActivity(intent);
         }
     }

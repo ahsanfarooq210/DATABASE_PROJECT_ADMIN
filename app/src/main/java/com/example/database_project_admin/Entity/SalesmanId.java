@@ -1,4 +1,4 @@
-package com.example.database_project_admin;
+package com.example.database_project_admin.Entity;
 
 public class SalesmanId
 {

@@ -1,4 +1,4 @@
-package com.example.database_project_admin;
+package com.example.database_project_admin.Activities;
 
 
 
@@ -28,6 +28,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.database_project_admin.ActioBarAdapter.TitleNavigationAdapter;
+import com.example.database_project_admin.Entity.ShopDetails;
+import com.example.database_project_admin.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;

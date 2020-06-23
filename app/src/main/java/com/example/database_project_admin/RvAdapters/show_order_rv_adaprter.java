@@ -1,4 +1,4 @@
-package com.example.database_project_admin;
+package com.example.database_project_admin.RvAdapters;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.database_project_admin.Entity.Orders;
+import com.example.database_project_admin.R;
 
 import java.util.ArrayList;
 

@@ -15,11 +15,10 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.database_project_admin.Orders;
+import com.example.database_project_admin.Entity.Orders;
 import com.example.database_project_admin.R;
-import com.example.database_project_admin.ShopDetails;
-import com.example.database_project_admin.Sku;
-import com.example.database_project_admin.show_order_rv_adaprter;
+import com.example.database_project_admin.Entity.Sku;
+import com.example.database_project_admin.RvAdapters.show_order_rv_adaprter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

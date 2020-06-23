@@ -17,10 +17,10 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.database_project_admin.Orders;
+import com.example.database_project_admin.Entity.Orders;
 import com.example.database_project_admin.R;
-import com.example.database_project_admin.SalesmanId;
-import com.example.database_project_admin.show_order_rv_adaprter;
+import com.example.database_project_admin.Entity.SalesmanId;
+import com.example.database_project_admin.RvAdapters.show_order_rv_adaprter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

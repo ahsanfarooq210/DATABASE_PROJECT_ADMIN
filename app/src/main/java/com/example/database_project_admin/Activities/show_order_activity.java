@@ -1,10 +1,11 @@
-package com.example.database_project_admin;
+package com.example.database_project_admin.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
 import com.example.database_project_admin.Fragments.*;
+import com.example.database_project_admin.R;
 import com.luseen.spacenavigation.SpaceItem;
 import com.luseen.spacenavigation.SpaceNavigationView;
 import com.luseen.spacenavigation.SpaceOnClickListener;
