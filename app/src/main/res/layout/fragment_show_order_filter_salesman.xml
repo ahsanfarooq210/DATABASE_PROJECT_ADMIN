@@ -18,7 +18,7 @@
     <Spinner
         android:id="@+id/salesman_filter_spinner"
         android:layout_width="0dp"
-        android:layout_weight="4"
+        android:layout_weight="3.5"
         android:inputType="textEmailAddress"
         android:layout_height="40dp"
         android:focusable="true"
@@ -34,21 +34,19 @@
         <Button
             android:layout_width="0dp"
             android:layout_height="40dp"
-
-
             android:clickable="true"
             android:layout_marginTop="5dp"
             android:background="@drawable/btn_bg"
             android:fontFamily="sans-serif-medium"
-            android:paddingLeft="70dp"
-            android:paddingRight="70dp"
             android:id="@+id/serch_btn"
             android:layout_weight="1"
+            android:text="@string/search"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:textSize="15sp" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/upper_linear_layout"

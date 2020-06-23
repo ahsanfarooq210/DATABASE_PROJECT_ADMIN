@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/add_target"
+        android:icon="@drawable/sku_target"
+        android:title="@string/add_target" />
+    <item
+        android:id="@+id/edit_target"
+        android:title="@string/edit_target"
+        android:icon="@drawable/goal_1"/>
+
+    </menu>

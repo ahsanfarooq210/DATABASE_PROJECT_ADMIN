@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/sku_target"
+        android:icon="@drawable/sku_target"
+
+        android:title="@string/sku_target" />
+
+    <item
+        android:id="@+id/salesmen_target"
+        android:title="@string/salesmen_target"
+        android:icon="@drawable/salesmen_target"/>
+
+    </menu>

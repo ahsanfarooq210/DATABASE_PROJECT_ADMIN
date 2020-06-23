@@ -10,11 +10,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_alignParentTop="true"
         android:animateLayoutChanges="true"
         android:id="@+id/upper_linear_layout">
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:fontFamily="sans-serif-light"
+            android:text="Select Shop"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
         <Spinner
             android:id="@+id/shop_filter_spinner"
             android:layout_width="0dp"
@@ -45,6 +60,7 @@
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
+    </LinearLayout>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
