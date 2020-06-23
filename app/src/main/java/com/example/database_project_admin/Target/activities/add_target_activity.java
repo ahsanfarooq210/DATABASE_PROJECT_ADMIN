@@ -1,4 +1,4 @@
-package com.example.database_project_admin.Target;
+package com.example.database_project_admin.Target.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

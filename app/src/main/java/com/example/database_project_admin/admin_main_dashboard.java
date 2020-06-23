@@ -34,8 +34,8 @@ import com.example.database_project_admin.ProfileActivities.activity_View_Profil
 import com.example.database_project_admin.ProfileActivities.notification_Activity;
 import com.example.database_project_admin.ProfileActivities.setting_activity;
 
-import com.example.database_project_admin.Target.add_target_activity;
-import com.example.database_project_admin.Target.target_details_activity;
+import com.example.database_project_admin.Target.activities.add_target_activity;
+import com.example.database_project_admin.Target.activities.target_details_activity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
