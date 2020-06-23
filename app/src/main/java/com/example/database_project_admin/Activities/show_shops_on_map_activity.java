@@ -90,7 +90,7 @@ public class show_shops_on_map_activity extends AppCompatActivity implements Act
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_shops_on_map_activity);
+        setContentView(R.layout.activity_show_shop_on_map_activity);
         actionBar = getActionBar();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
