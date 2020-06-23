@@ -1,4 +1,4 @@
-package com.example.database_project_admin.Target.activities;
+package com.example.database_project_admin.Target;
 
 import android.os.Bundle;
 import android.view.MenuItem;
