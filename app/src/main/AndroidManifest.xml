@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.database_project_admin" >
+    package="com.example.database_project_admin">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -13,7 +13,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
+        <activity android:name=".Activities.Show_salesman_activity"></activity>
         <activity
             android:name=".Target.activities.target_details_activity"
             android:label=""
@@ -27,7 +28,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key" />
 
-        <receiver android:name=".BrodcastReceivers.LocationBrodcast" >
+        <receiver android:name=".BrodcastReceivers.LocationBrodcast">
             <intent-filter>
                 <action android:name="android.location.GPS_ENABLED_CHANGE" />
 
@@ -66,7 +67,7 @@
         <activity
             android:name=".Activities.admin_main_dashboard"
             android:label=""
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

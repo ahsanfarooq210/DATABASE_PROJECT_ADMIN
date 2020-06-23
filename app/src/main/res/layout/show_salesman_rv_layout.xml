@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:id="@+id/Show_salesman_card_view"
+    android:layout_width="match_parent"
+    android:layout_height="190dp"
+    android:focusable="true"
+    android:layout_margin="10dp"
+    app:cardBackgroundColor="@color/colorPrimary"
+    app:cardCornerRadius="15dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:text="email"
+            android:id="@+id/show_salesman_rv_email"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@android:color/white"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/white"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:text="password"
+            android:id="@+id/show_salesman_rv_password"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@android:color/white"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
