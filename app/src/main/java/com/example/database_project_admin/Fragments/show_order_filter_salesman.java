@@ -78,7 +78,9 @@ public class show_order_filter_salesman extends Fragment
 
                 String salesmanEmail=salesmanId.getEmail();
 
-                Query query=FirebaseDatabase.getInstance().getReference("ORDERS").orderByChild("salesman").equalTo(salesmanEmail);
+
+
+                Query  query=FirebaseDatabase.getInstance().getReference("ORDERS").orderByChild("salesman").equalTo(salesmanEmail);
 
                 query.addListenerForSingleValueEvent(new ValueEventListener()
                 {
@@ -93,6 +95,7 @@ public class show_order_filter_salesman extends Fragment
                         }
                         show_order_rv_adaprter showOrderRvAdaprter=new show_order_rv_adaprter((ArrayList<Orders>) orderList,  getActivity());
                         recyclerView.setAdapter(showOrderRvAdaprter);
+
                     }
 
                     @Override
