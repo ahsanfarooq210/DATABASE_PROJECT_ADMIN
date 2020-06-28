@@ -22,7 +22,7 @@
             android:adjustViewBounds="true"
             android:layout_marginLeft="10dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/salesmen_target" />
+            android:src="@drawable/sales_men_target" />
 
 
         <RelativeLayout

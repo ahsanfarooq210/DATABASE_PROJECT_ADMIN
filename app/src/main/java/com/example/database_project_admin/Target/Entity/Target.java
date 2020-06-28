@@ -1,6 +1,7 @@
-package com.example.database_project_admin.Target;
+package com.example.database_project_admin.Target.Entity;
 
-import com.example.database_project_admin.Sku;
+import com.example.database_project_admin.Entity.Sku;
+
 
 public class Target {
    String TARGET_ID;

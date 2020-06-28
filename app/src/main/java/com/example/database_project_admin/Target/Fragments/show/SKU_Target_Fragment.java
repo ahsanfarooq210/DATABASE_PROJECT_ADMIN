@@ -17,10 +17,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.database_project_admin.Entity.Sku;
 import com.example.database_project_admin.R;
-import com.example.database_project_admin.Sku;
-import com.example.database_project_admin.Target.Target;
-import com.example.database_project_admin.Target.Target_SalesMen;
+
+import com.example.database_project_admin.Target.Entity.Target;
+import com.example.database_project_admin.Target.Entity.Target_SalesMen;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -31,7 +32,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**

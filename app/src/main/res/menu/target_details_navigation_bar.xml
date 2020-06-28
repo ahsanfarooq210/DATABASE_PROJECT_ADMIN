@@ -12,6 +12,6 @@
     <item
         android:id="@+id/salesmen_target"
         android:title="@string/salesmen_target"
-        android:icon="@drawable/salesmen_target"/>
+        android:icon="@drawable/sales_men_target"/>
 
     </menu>

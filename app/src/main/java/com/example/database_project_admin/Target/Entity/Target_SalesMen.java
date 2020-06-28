@@ -1,4 +1,4 @@
-package com.example.database_project_admin.Target;
+package com.example.database_project_admin.Target.Entity;
 
 public class Target_SalesMen {
     String TARGET_ID;

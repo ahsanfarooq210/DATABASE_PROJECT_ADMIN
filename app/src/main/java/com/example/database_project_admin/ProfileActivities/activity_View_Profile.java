@@ -12,7 +12,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.database_project_admin.R;
-import com.example.database_project_admin.admin_main_dashboard;
+import com.example.database_project_admin.Activities.admin_main_dashboard;
 
 public class activity_View_Profile extends AppCompatActivity {
  TextView Name_textView,Cnic_textView,Email_textView,dob_textView,cell_no_textView,education_textView;

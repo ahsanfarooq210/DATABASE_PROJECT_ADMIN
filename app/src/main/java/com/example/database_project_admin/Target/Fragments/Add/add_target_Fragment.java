@@ -17,9 +17,9 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.database_project_admin.Entity.Sku;
 import com.example.database_project_admin.R;
-import com.example.database_project_admin.Sku;
-import com.example.database_project_admin.Target.Target;
+import com.example.database_project_admin.Target.Entity.Target;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

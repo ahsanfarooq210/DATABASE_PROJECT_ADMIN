@@ -11,8 +11,9 @@ import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.database_project_admin.Activities.admin_main_dashboard;
 import com.example.database_project_admin.R;
-import com.example.database_project_admin.admin_main_dashboard;
+
 
 public class activity_Edit_Profile extends AppCompatActivity {
     EditText Name_EDITTEXT,Cnic_EDITTEXT,Email_EDITTEXT,dob_EDITTEXT,cell_no_EDITTEXT,education_EDITTEXT; //splash screen relative layout
