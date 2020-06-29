@@ -410,4 +410,9 @@ public void onBackPressed() {
 {
    // startActivity(new Intent(admin_main_dashboard.this,target_details_activity.class));
 }
+
+    public void showSalesman(View view)
+    {
+        startActivity(new Intent(admin_main_dashboard.this,Show_salesman_activity.class));
+    }
 }

@@ -10,7 +10,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/show_salesman_recycler_view"
-        android:animateLayoutChanges="true"/>
+        android:id="@+id/show_salesman_recycler_view"/>
 
 </RelativeLayout>

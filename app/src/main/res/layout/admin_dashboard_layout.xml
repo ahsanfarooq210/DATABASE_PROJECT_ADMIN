@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin_main_dashboard">
+    tools:context=".Activities.admin_main_dashboard">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -108,7 +108,7 @@
                         android:id="@+id/dashboard_edit_order"
                         android:layout_width="160dp"
                         android:layout_height="160dp"
-                        android:onClick="editOrder"
+                        android:onClick="showSalesman"
                         android:focusable="true"
                         android:layout_margin="10dp"
 
@@ -124,14 +124,14 @@
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:background="@drawable/oval_black"
-                                android:src="@drawable/icons8_edit_link_48px"
+                                android:src="@drawable/icons8_identification_documents_30px_1"
                                 />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
                                 android:layout_marginTop="10dp"
-                                android:text="Edit order"
+                                android:text="Show Slaesman"
                                 android:fontFamily="sans-serif-light"
                                 android:textColor="@android:color/white"/>
                             <View
@@ -149,7 +149,7 @@
                                 android:layout_marginTop="10dp"
                                 android:layout_gravity="center"
                                 android:gravity="center_horizontal"
-                                android:text="Click here to edit previous placed orders"
+                                android:text="Click here to show all the salesman"
                                 android:fontFamily="sans-serif-light"
                                 android:textColor="@android:color/white"/>
                         </LinearLayout>
