@@ -59,6 +59,18 @@
                 android:text="Quantity"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
+            <TextView
+                android:id="@+id/show_order_rv_layout_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="7dp"
+                android:fontFamily="sans-serif-light"
+                android:text="Order Status"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

@@ -6,18 +6,30 @@ public class Orders
     ShopDetails shop;
     Sku sku;
     int quantity;
+    String orderStatus;
 
     public Orders()
     {
     }
 
-    public Orders(String id, String salesman, ShopDetails shop, Sku sku, int quantity)
+    public Orders(String id, String salesman, ShopDetails shop, Sku sku, int quantity,String orderStatus)
     {
         this.id = id;
         this.salesman = salesman;
         this.shop = shop;
         this.sku = sku;
         this.quantity = quantity;
+        this.orderStatus=orderStatus;
+    }
+
+    public String getOrderStatus()
+    {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus)
+    {
+        this.orderStatus = orderStatus;
     }
 
     public String getId()
