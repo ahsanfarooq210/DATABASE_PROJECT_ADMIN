@@ -72,7 +72,7 @@ public class show_order_filter_sku extends Fragment
             {
                 final Sku sku= (Sku) skuSpinner.getSelectedItem();
 
-                Query query=FirebaseDatabase.getInstance().getReference("ORDERS").orderByChild("sku");
+                Query query=FirebaseDatabase.getInstance().getReference().child("ORDERS").orderByChild("sku_id").equalTo(sku.getId());
 
                 query.addListenerForSingleValueEvent(new ValueEventListener()
                 {
@@ -83,7 +83,7 @@ public class show_order_filter_sku extends Fragment
                         orderList.clear();
                         for(DataSnapshot shop:dataSnapshot.getChildren())
                         {
-                           if(shop.getValue(Orders.class).getSku().getId().equals(sku.getId()))
+                           //if(shop.getValue(Orders.class).getSku().getId().equals(sku.getId()))
                             orderList.add(shop.getValue(Orders.class));
                         }
                         show_order_rv_adaprter showOrderRvAdaprter=new show_order_rv_adaprter((ArrayList<Orders>) orderList,  getActivity());

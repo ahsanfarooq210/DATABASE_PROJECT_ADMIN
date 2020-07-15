@@ -7,6 +7,10 @@ public class Orders
     Sku sku;
     int quantity;
     String orderStatus;
+    String shop_id;
+    String sku_id;
+    String company_id;
+    String catagory_id;
 
     public Orders()
     {
@@ -20,6 +24,50 @@ public class Orders
         this.sku = sku;
         this.quantity = quantity;
         this.orderStatus=orderStatus;
+        this.shop_id=shop.getId();
+        this.sku_id=sku.getId();
+        this.company_id=sku.getCompany().getId();
+        this.catagory_id=sku.getCatagory().getId();
+    }
+
+    public String getShop_id()
+    {
+        return shop_id;
+    }
+
+    public void setShop_id(String shop_id)
+    {
+        this.shop_id = shop_id;
+    }
+
+    public String getSku_id()
+    {
+        return sku_id;
+    }
+
+    public void setSku_id(String sku_id)
+    {
+        this.sku_id = sku_id;
+    }
+
+    public String getCompany_id()
+    {
+        return company_id;
+    }
+
+    public void setCompany_id(String company_id)
+    {
+        this.company_id = company_id;
+    }
+
+    public String getCatagory_id()
+    {
+        return catagory_id;
+    }
+
+    public void setCatagory_id(String catagory_id)
+    {
+        this.catagory_id = catagory_id;
     }
 
     public String getOrderStatus()
