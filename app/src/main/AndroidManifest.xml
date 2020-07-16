@@ -22,6 +22,7 @@
         <activity
             android:name=".Target.activities.add_target_activity"
             android:label=""
+            android:windowSoftInputMode="stateHidden|adjustResize"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data

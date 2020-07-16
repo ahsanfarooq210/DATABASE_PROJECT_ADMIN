@@ -63,8 +63,6 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center"
                         android:layout_marginTop="10dp"
                         android:fontFamily="sans-serif-medium"
                         android:text="Select SKU"
@@ -85,6 +83,37 @@
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
                         android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Select Salesmen"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp" />
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/et_bg"
+                        android:layout_marginTop="10dp"
+                        android:id="@+id/target_add_SalesMen_spinner"
+                        android:fontFamily="sans-serif-light"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:animateLayoutChanges="true"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Enter Target"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp" />
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
@@ -100,6 +129,19 @@
                         android:textColor="@android:color/white"
                         android:textSize="15sp" />
 
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/btn_bg"
+                        android:fontFamily="sans-serif-medium"
+                        android:paddingLeft="40dp"
+                        android:paddingRight="40dp"
+                        android:text="Select Date for Target"
+                        android:id="@+id/select_date_button"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 

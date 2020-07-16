@@ -11,9 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="20dp"
         android:animateLayoutChanges="true"
-        android:layout_marginRight="40dp">
+        android:layout_marginRight="20dp">
 
         <ImageView
             android:id="@+id/imgView_logo"
@@ -21,15 +21,16 @@
             android:layout_height="80dp"
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
-            android:visibility="gone"
-            android:src="@drawable/ic_settings_applications_24" />
+            android:visibility="visible"
+            android:src="@drawable/setting" />
 
         <RelativeLayout
-            android:id="@+id/rellay1"
-            android:layout_width="wrap_content"
+            android:id="@+id/rellay_setting"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgView_logo"
             android:layout_marginTop="2dp"
+            android:visibility="gone"
             android:animateLayoutChanges="true">
 
             <TextView
@@ -41,119 +42,73 @@
                 android:text="Setting"
                 android:textColor="@android:color/black"
                 android:textSize="30sp" />
-
             <LinearLayout
-                android:id="@+id/linlay1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_login"
-                android:layout_marginTop="20dp"
+                android:background="@android:color/transparent"
+                android:id="@+id/expandable_linearlayout"
+                android:layout_below="@id/tv_login"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Change Password"
-                        android:layout_gravity="center_horizontal"
-                        android:textColor="@android:color/black"
-                        android:textSize="30sp" />
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp"
+                    >
 
-                    <LinearLayout
+                    <com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        >
+                        app:expansion_openOnlyOne="true"
+                        android:background="@android:color/transparent"
+                        android:orientation="vertical">
 
-                        <LinearLayout
+                        <include layout="@layout/change_password_expandable_layout" />
+
+                        <View
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_weight="1">
+                            android:layout_height="0.5dp"
+                            android:background="#CCC" />
 
-                            <EditText
-                                android:id="@+id/current_password_editText"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:layout_marginTop="5dp"
-                                android:background="@drawable/et_bg"
-                                android:fontFamily="sans-serif-light"
-                                android:hint="Current Password"
-                                android:inputType="textPassword"
-                                android:paddingLeft="15dp"
-                                android:paddingRight="15dp"
-                                android:textColor="@android:color/white"
-                                android:textColorHint="@android:color/white"
-                                android:textSize="15sp" />
+                        <include
 
-                            <EditText
-                                android:id="@+id/new_password_editText"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:layout_marginTop="5dp"
-                                android:background="@drawable/et_bg"
-                                android:fontFamily="sans-serif-light"
-                                android:hint="Enter New  Password"
-                                android:inputType="textPassword"
-                                android:paddingLeft="15dp"
-                                android:paddingRight="15dp"
-                                android:textColor="@android:color/white"
-                                android:textColorHint="@android:color/white"
-                                android:textSize="15sp" />
+                            layout="@layout/change_text_size_expandable_layout" />
 
-                            <EditText
-                                android:id="@+id/confirm_new_password_editText"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:layout_marginTop="5dp"
-                                android:background="@drawable/et_bg"
-                                android:fontFamily="sans-serif-light"
-                                android:hint="Confirm New Password"
-                                android:inputType="textPassword"
-                                android:paddingLeft="15dp"
-                                android:paddingRight="15dp"
-                                android:textColor="@android:color/white"
-                                android:textColorHint="@android:color/white"
-                                android:textSize="15sp" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="#CCC"
 
-                        </LinearLayout>
+                            />
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:orientation="vertical"
-                            >
+                        <include layout="@layout/change_font_expandable_layout"
+                            />
 
-                            <CheckBox
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"></CheckBox>
+                    </com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLayout>
 
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
+
             <Button
-                android:id="@+id/login_button"
+                android:id="@+id/back_button_setting"
+
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_below="@+id/linlay1"
+                android:layout_below="@+id/expandable_linearlayout"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="50dp"
                 android:background="@drawable/btn_bg"
                 android:clickable="true"
                 android:fontFamily="sans-serif-medium"
-                android:onClick="loginButton"
+
                 android:paddingLeft="70dp"
                 android:paddingRight="70dp"
-                android:text="Login Now"
+                android:text="Back"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textSize="16sp" />
@@ -168,7 +123,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="bottom"
-        android:id="@+id/bottom_rally2"
+        android:id="@+id/bottom_rally_setting"
         android:layout_alignParentBottom="true"
         android:visibility="gone">
         <TextView
@@ -180,7 +135,7 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/rellay2"
+        android:id="@+id/rellay2_setting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

@@ -39,6 +39,7 @@ import com.example.database_project_admin.Target.activities.add_target_activity;
 import com.example.database_project_admin.Target.activities.target_details_activity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
@@ -257,13 +258,13 @@ public void onBackPressed() {
         // checking if user is on other navigation menu
         // rather than home
         if (navItemIndex != 0) {
-            navItemIndex = 0;
+            navItemIndex = -1;
             load();
             return;
         }
     }
 
-    super.onBackPressed();
+    //super.onBackPressed();
 }
 
     @Override
@@ -290,7 +291,9 @@ public void onBackPressed() {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            Toast.makeText(getApplicationContext(), "Logout user!", Toast.LENGTH_LONG).show();
+            FirebaseAuth.getInstance().signOut();
+            Intent intent=new Intent(admin_main_dashboard.this, MainActivity.class);
+            startActivity(intent);
             return true;
         }
 

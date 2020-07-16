@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
 
     <RelativeLayout
@@ -46,67 +46,69 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_login"
-                android:layout_marginTop="20dp"
+
                 android:orientation="vertical">
 
-                <LinearLayout
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="Username"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="15sp" />
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/black"
+                    app:hintTextAppearance="@style/TextLabel"
 
-                    <EditText
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+
                         android:id="@+id/username_tf"
+                        android:hint="Email"
+
                         android:layout_width="match_parent"
-                        android:inputType="textEmailAddress"
-                        android:layout_height="40dp"
+                        android:layout_height="60dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/et_bg"
+                        android:inputType="textEmailAddress"
+
                         android:fontFamily="sans-serif-light"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp" />
+                        android:background="@drawable/bg_edit_text"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                </LinearLayout>
 
-                <LinearLayout
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="vertical">
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/black"
+                    app:hintTextAppearance="@style/TextLabel"
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="Password"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="15sp" />
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@android:color/black">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
+
                         android:id="@+id/password_tf"
+                        android:hint="Password"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="60dp"
                         android:layout_marginTop="5dp"
                         android:inputType="textPassword"
-                        android:background="@drawable/et_bg"
+                        android:background="@drawable/bg_edit_text"
                         android:fontFamily="sans-serif-light"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 

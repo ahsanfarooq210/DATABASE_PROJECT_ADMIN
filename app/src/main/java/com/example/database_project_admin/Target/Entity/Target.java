@@ -7,19 +7,46 @@ public class Target {
    String TARGET_ID;
    Sku SKU;
    int TARGET;
-   long TARGET_DATE;
+   String salesmenEmail;
+   String startDateString ,endDateString;
    String SKU_ID;
 
     public Target() {
     }
 
-    public Target(String TARGET_ID, Sku SKU,String SKU_ID, int TARGET, long TARGET_DATE) {
+    public Target(String TARGET_ID, Sku SKU,String SKU_ID,String salesmenEmail, int TARGET, String startDateString ,String endDateString) {
         this.TARGET_ID = TARGET_ID;
         this.SKU = SKU;
         this.TARGET = TARGET;
         this.SKU_ID=SKU_ID;
-        this.TARGET_DATE = TARGET_DATE;
+        this.salesmenEmail=salesmenEmail;
+        this.startDateString = startDateString ;
+        this.endDateString =endDateString;
 
+    }
+
+    public String getSalesmenEmail() {
+        return salesmenEmail;
+    }
+
+    public void setSalesmenEmail(String salesmenEmail) {
+        this.salesmenEmail = salesmenEmail;
+    }
+
+    public String getStartDateString() {
+        return startDateString;
+    }
+
+    public void setStartDateString(String startDateString) {
+        this.startDateString = startDateString;
+    }
+
+    public String getEndDateString() {
+        return endDateString;
+    }
+
+    public void setEndDateString(String endDateString) {
+        this.endDateString = endDateString;
     }
 
     public String getSKU_ID() {
@@ -54,11 +81,5 @@ public class Target {
         this.TARGET = TARGET;
     }
 
-    public long getTARGET_DATE() {
-        return TARGET_DATE;
-    }
 
-    public void setTARGET_DATE(long TARGET_DATE) {
-        this.TARGET_DATE = TARGET_DATE;
-    }
 }

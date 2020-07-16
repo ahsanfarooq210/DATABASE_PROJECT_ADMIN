@@ -7,6 +7,7 @@ import android.app.ActionBar;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -15,12 +16,15 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -44,6 +48,7 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -310,12 +315,13 @@ public class show_shops_on_map_activity extends AppCompatActivity implements Act
 
         }
         public void onMapSearch (String location){
-
+            if (getCurrentFocus() != null) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                assert imm != null;
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
             List<Address> addressList = null;
-        /*if(location.isEmpty())
-        {
-            locationSearch.setError(getResources().getString(R.string.error));
-        }*/
+
             if (!location.isEmpty()) {
                 Geocoder geocoder = new Geocoder(this);
                 try {
@@ -324,16 +330,33 @@ public class show_shops_on_map_activity extends AppCompatActivity implements Act
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Address address = addressList.get(0);
-                LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
 
-                MarkerOptions markerOptions = new MarkerOptions();
-                markerOptions.position(latLng);
-                markerOptions.title(location);
-                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-                // mMap.addMarker(new MarkerOptions().position(latLng).title(location));
-                mMap.addMarker(markerOptions);
-                mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                if (addressList.isEmpty()) {
+
+                    View contextView = findViewById(android.R.id.content);
+                    Snackbar snackbar = Snackbar.make(contextView,"Address Not found",Snackbar.LENGTH_LONG);
+
+                    View snackbarView = snackbar.getView();
+                    TextView snackbarText = (TextView) snackbarView.findViewById(R.id.snackbar_text);
+                    snackbarText.setTextColor(Color.RED);
+                    snackbarText.setGravity(Gravity.CENTER_HORIZONTAL);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1)
+                        snackbarText.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+                    else
+                        snackbarText.setGravity(Gravity.CENTER_HORIZONTAL);
+                    snackbar.show();
+
+                } else {
+                    Address address = addressList.get(0);
+                    LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+                    MarkerOptions markerOptions = new MarkerOptions();
+                    markerOptions.position(latLng);
+                    markerOptions.title(location);
+                    markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
+                    // mMap.addMarker(new MarkerOptions().position(latLng).title(location));
+                    mMap.addMarker(markerOptions);
+                    mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                }
             }
         }
     //ahsan
