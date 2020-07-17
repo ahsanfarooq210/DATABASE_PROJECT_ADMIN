@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.github.florent37.expansionpanel.ExpansionHeader
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/sampleHeader"
+        app:expansion_headerIndicator="@id/headerIndicator"
+        app:expansion_layout="@id/expansionLayout"
+        app:expansion_toggleOnClick="true">
+
+        <RelativeLayout
+            android:background="@drawable/et_bg"
+            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            android:paddingLeft="16dp"
+
+            android:paddingRight="16dp">
+
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:text="SKU Details"
+                android:textColor="#AAA" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:adjustViewBounds="true"
+                android:id="@+id/headerIndicator"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_width="wrap_content"
+                app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+        </RelativeLayout>
+
+    </com.github.florent37.expansionpanel.ExpansionHeader>
+
+    <com.github.florent37.expansionpanel.ExpansionLayout
+        android:id="@+id/expansionLayout"
+        app:expansion_expanded="true"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:id="@+id/container"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1.5"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Company"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Catagory "
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Product Name  "
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Product Size "
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+
+
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/company_sku_expandable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Company"
+
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/category_sku_expandable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Category "
+                    android:textAllCaps="true"
+
+
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/product_name_sku_expandable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   android:layout_marginBottom="10dp"
+                   android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Product Name  "
+
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/product_size_sku_expandable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Product Size "
+                    android:textAllCaps="true"
+
+
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.github.florent37.expansionpanel.ExpansionLayout>
+</LinearLayout>

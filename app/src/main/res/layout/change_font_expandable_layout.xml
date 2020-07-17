@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.github.florent37.expansionpanel.ExpansionHeader
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/sampleHeader"
+        app:expansion_headerIndicator="@id/headerIndicator"
+        app:expansion_layout="@id/expansionLayout"
+        app:expansion_toggleOnClick="true">
+
+        <RelativeLayout
+            android:background="@drawable/et_bg"
+            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            android:paddingLeft="16dp"
+
+            android:paddingRight="16dp">
+
+
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:text="Change Text Size"
+                android:textColor="#AAA" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:adjustViewBounds="true"
+                android:id="@+id/headerIndicator"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_width="wrap_content"
+                app:srcCompat="@drawable/ic_expansion_header_indicator_grey_24dp" />
+
+        </RelativeLayout>
+
+    </com.github.florent37.expansionpanel.ExpansionHeader>
+
+    <com.github.florent37.expansionpanel.ExpansionLayout
+        android:id="@+id/expansionLayout"
+        app:expansion_expanded="false"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/container"
+
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/Radio_Group_setting_font"
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+                <RadioButton
+                    android:id="@+id/one_radio_button_first_Radio_Group_setting_font"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="sans-serif-condensed-medium"
+                    android:text="Default" />
+
+                <RadioButton
+                    android:id="@+id/six_radio_button_first_Radio_Group_setting_font"
+                    android:layout_centerHorizontal="true"
+                    android:text="Casual"
+                    android:fontFamily="casual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/second_radio_button_first_Radio_Group_setting_font"
+                    android:layout_centerHorizontal="true"
+                    android:text="Cursive"
+                    android:fontFamily="cursive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/third_radio_button_first_Radio_Group_setting_font"
+                    android:layout_centerHorizontal="true"
+                    android:text="Monospace"
+                    android:fontFamily="monospace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/fourth_radio_button_first_Radio_Group_setting_font"
+                    android:layout_centerHorizontal="true"
+                    android:text="Sans Serif"
+                    android:fontFamily="sans-serif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/fivth_radio_button_first_Radio_Group_setting_font"
+                    android:layout_centerHorizontal="true"
+                    android:text="Serif"
+                    android:fontFamily="serif"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+
+            </RadioGroup>
+        </RelativeLayout>
+
+    </com.github.florent37.expansionpanel.ExpansionLayout>
+</LinearLayout>
