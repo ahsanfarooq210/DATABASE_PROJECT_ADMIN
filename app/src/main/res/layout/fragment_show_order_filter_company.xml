@@ -1,14 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.show_order_filter_company">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".Fragments.show_order_filter_company"
+    android:orientation="vertical">
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="select company"
+        android:id="@+id/catagory_filter_text"
+        android:layout_gravity="center"
+        android:textSize="15sp"/>
+
+    <LinearLayout
+        android:id="@+id/upper_linear_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:animateLayoutChanges="true"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/company_filter_spinner"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="3.5"
+            android:background="@drawable/et_bg"
+            android:focusable="true"
+            android:fontFamily="sans-serif-light"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/company_serch_btn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/btn_bg"
+            android:clickable="true"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/search"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/filter_company_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_below="@+id/upper_linear_layout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="65dp"/>
 
-</FrameLayout>
+
+
+</LinearLayout>

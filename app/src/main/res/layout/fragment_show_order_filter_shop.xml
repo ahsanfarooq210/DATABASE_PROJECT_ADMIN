@@ -53,8 +53,9 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/btn_bg"
             android:fontFamily="sans-serif-medium"
-            android:paddingLeft="70dp"
-            android:paddingRight="70dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="search"
             android:id="@+id/shop_serch_btn"
             android:layout_weight="1"
             android:textAllCaps="false"
@@ -68,6 +69,7 @@
         android:layout_below="@+id/upper_linear_layout"
         android:layout_marginRight="10dp"
         android:id="@+id/filter_shop_recycler_view"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="65dp"/>
 
 </RelativeLayout>

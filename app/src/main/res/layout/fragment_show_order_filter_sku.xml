@@ -67,6 +67,7 @@
         android:layout_below="@+id/upper_linear_layout"
         android:layout_marginRight="10dp"
         android:id="@+id/filter_sku_recycler_view"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="65dp"/>
 
 </RelativeLayout>
