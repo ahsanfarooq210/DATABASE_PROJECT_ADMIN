@@ -19,7 +19,6 @@ import com.example.database_project_admin.Entity.SalesmanId;
 import com.example.database_project_admin.R;
 import com.example.database_project_admin.RvAdapters.ShowSalesmanRvAdapter;
 import com.example.database_project_admin.Target.Entity.Target;
-import com.forcelain.awesomelayoutmanager.AwesomeViewHolder;
 
 import java.io.IOException;
 import java.io.InputStream;
