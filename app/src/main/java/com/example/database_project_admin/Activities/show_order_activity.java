@@ -25,11 +25,11 @@ public class show_order_activity extends AppCompatActivity
 
         navigationView=findViewById(R.id.space);
         navigationView.initWithSaveInstanceState(savedInstanceState);
-        //navigationView.addSpaceItem(new SpaceItem("",R.drawable.icons8_delete_file_64px_2));
+        navigationView.addSpaceItem(new SpaceItem("",R.drawable.icons8_category_80px));
         navigationView.addSpaceItem(new SpaceItem("", R.drawable.icons8_product_documents_128px));
         navigationView.setCentreButtonIcon(R.drawable.icons8_manager_52px);
         navigationView.addSpaceItem(new SpaceItem("", R.drawable.icons8_online_store_128px_1));
-        // navigationView.addSpaceItem(new SpaceItem("",R.drawable.icons8_delete_document_64px));
+        navigationView.addSpaceItem(new SpaceItem("",R.drawable.icons8_company_50px));
         navigationView.setCentreButtonSelectable(true);
         navigationView.setCentreButtonSelected();
         //initializing the fragments
@@ -48,17 +48,25 @@ public class show_order_activity extends AppCompatActivity
             {
                 if(itemIndex==0)
                 {
+                    getSupportFragmentManager().beginTransaction().replace(R.id.show_order_filter_framelayout,new show_order_filter_catagory()).commit();
+                }
+                else
+                if(itemIndex==1)
+                {
                     getSupportFragmentManager().beginTransaction().replace(R.id.show_order_filter_framelayout,new show_order_filter_sku()).commit();
                 }
                 else
                 {
-                    if(itemIndex==1)
+                    if(itemIndex==2)
                     {
                         getSupportFragmentManager().beginTransaction().replace(R.id.show_order_filter_framelayout,new show_order_filter_shop()).commit();
                     }
                     else
                     {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.show_order_filter_framelayout,new show_order_filter_sku()).commit();
+                       if(itemIndex==3)
+                       {
+                            
+                       }
                     }
                 }
             }
