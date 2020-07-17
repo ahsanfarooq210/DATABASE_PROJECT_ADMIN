@@ -1,10 +1,13 @@
 package com.example.database_project_admin.Target.Fragments.Add;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -24,6 +27,8 @@ import com.example.database_project_admin.Entity.Sku;
 import com.example.database_project_admin.R;
 
 import com.example.database_project_admin.Target.Entity.Target;
+import com.example.database_project_admin.Target.RecyclerViewContent.Adapter.RecyclerViewAdapter;
+import com.forcelain.awesomelayoutmanager.AwesomeLayoutManager;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -72,7 +77,7 @@ public class Edit_fragment_Fragment extends Fragment {
     //array lists for the array adapters
     private List<Sku> skuList;
     private List<SalesmanId> salesmanIdList;
-    private List<Target> targetList;
+    private ArrayList<Target> targetList;
 
     //handler for the splash screen
     private Handler handler = new Handler();
@@ -80,9 +85,9 @@ public class Edit_fragment_Fragment extends Fragment {
         @Override
         public void run() {
 
-            rellay1.setVisibility(View.VISIBLE);
-            rellay2.setVisibility(View.VISIBLE);
-            rally3.setVisibility(View.VISIBLE);
+//            rellay1.setVisibility(View.VISIBLE);
+           // rellay2.setVisibility(View.VISIBLE);
+           // rally3.setVisibility(View.VISIBLE);
 
         }
     };
@@ -104,6 +109,11 @@ public class Edit_fragment_Fragment extends Fragment {
     private FirebaseUser user;
     View view;
     View v;
+
+    //recyclerView
+    private RecyclerViewAdapter recyclerViewAdapter;
+    private RecyclerView recyclerView;
+
     public Edit_fragment_Fragment() {
         // Required empty public constructor
     }
@@ -114,8 +124,8 @@ public class Edit_fragment_Fragment extends Fragment {
 
         v=new View(getContext());
 
-        rellay1 = v.findViewById(R.id.target_edit_layout);
-        rally3 = v.findViewById(R.id.adding_target_bottom_edit);
+       // rellay1 = v.findViewById(R.id.target_edit_layout);
+        //rally3 = v.findViewById(R.id.adding_target_bottom_edit);
 
         //splash screen
         handler.postDelayed(runnable, 500);
@@ -131,6 +141,19 @@ public class Edit_fragment_Fragment extends Fragment {
         skuList = new ArrayList<>();
         salesmanIdList=new ArrayList<>();
         targetList=new ArrayList<>();
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+       // recyclerViewAdapter.setArticles(targetList);
+       /* recyclerViewAdapter.setItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClicked(int pos) {
+                layoutManager.openItem(pos);
+            }
+        });
+*/
         //initializing database reference for downloading and uploading the data the data
         skuReference = FirebaseDatabase.getInstance().getReference("SKU");
         targetReference= FirebaseDatabase.getInstance().getReference("TARGET");
@@ -139,7 +162,7 @@ public class Edit_fragment_Fragment extends Fragment {
         skuReference.keepSynced(true);
         targetReference.keepSynced(true);
         salesMenRefernce.keepSynced(true);
-
+/*
         //relative layouts
         rellay1 = view.findViewById(R.id.target_edit_layout);
         rellay2=view.findViewById(R.id.adding_sku_rellay2_edit);
@@ -180,16 +203,6 @@ public class Edit_fragment_Fragment extends Fragment {
         DateMaterialDatePicker.clearOnPositiveButtonClickListeners();
         DateMaterialDatePicker.clearOnCancelListeners();
         final int[] selected_Sku = {0};
-Sku sku =(Sku)skuSpinner.getSelectedItem();
-for (int i=0; i<targetList.size(); i++)
-{
-    if(targetList.get(i).getSKU().equals(sku))
-    {
-        add_target_et.setText(targetList.get(i).getTARGET());
-        break;
-    }
-}
-
         DateMaterialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
             @Override
             public void onPositiveButtonClick(Object selection) {
@@ -253,7 +266,7 @@ for (int i=0; i<targetList.size(); i++)
 
                 progressBarh.postDelayed(runnable1,500);
             }
-        });
+        });*/
         return  view;
     }
     private String dateToString(Date date)
@@ -281,6 +294,8 @@ for (int i=0; i<targetList.size(); i++)
                 {
                     targetList.add(target.getValue(Target.class));
                 }
+                recyclerViewAdapter=new RecyclerViewAdapter(targetList, (Activity) getContext());
+                recyclerView.setAdapter(recyclerViewAdapter);
             }
 
             @Override
@@ -295,7 +310,7 @@ for (int i=0; i<targetList.size(); i++)
                 for (DataSnapshot sku : dataSnapshot.getChildren()) {
                     skuList.add(sku.getValue(Sku.class));
                 }
-                skuSpinner.setAdapter(skuArrayAdapter);
+//                skuSpinner.setAdapter(skuArrayAdapter);
             }
 
             @Override
@@ -311,7 +326,7 @@ for (int i=0; i<targetList.size(); i++)
                 {
                     salesmanIdList.add(salesmen.getValue(SalesmanId.class));
                 }
-                salesmenSpinner.setAdapter(salesmanIdArrayAdapter);
+               // salesmenSpinner.setAdapter(salesmanIdArrayAdapter);
             }
 
             @Override

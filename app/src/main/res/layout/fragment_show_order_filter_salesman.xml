@@ -51,6 +51,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/upper_linear_layout"
         android:layout_marginRight="10dp"
+        android:layout_marginBottom="65dp"
         android:id="@+id/filter_salesman_recycler_view"
         android:layout_marginLeft="10dp"/>
 

@@ -23,7 +23,11 @@ android {
     }
 
 }
-
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -91,5 +95,6 @@ dependencies {
 
 //expand pane
     implementation 'com.github.florent37:expansionpanel:1.2.4'
-
+//custom RecyclerView AwesomeLayoutManager
+    compile 'com.github.forceLain:AwesomeLayoutManager:45c166aeb9'
 }
