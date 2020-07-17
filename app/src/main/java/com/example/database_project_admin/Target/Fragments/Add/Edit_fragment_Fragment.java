@@ -1,6 +1,7 @@
 package com.example.database_project_admin.Target.Fragments.Add;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,24 +14,24 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.database_project_admin.Entity.SalesmanId;
 import com.example.database_project_admin.Entity.Sku;
 import com.example.database_project_admin.R;
 
 import com.example.database_project_admin.Target.Entity.Target;
+import com.example.database_project_admin.Target.RecyclerViewContent.classes.RecyclerItemClickListener;
 import com.example.database_project_admin.Target.RecyclerViewContent.Adapter.RecyclerViewAdapter;
-import com.forcelain.awesomelayoutmanager.AwesomeLayoutManager;
+import com.github.florent37.expansionpanel.ExpansionLayout;
 import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,10 +44,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -54,8 +53,13 @@ import java.util.TimeZone;
  */
 public class Edit_fragment_Fragment extends Fragment {
 
+    ImageView headerIndicator;
+    ExpansionLayout expansionLayout;
+    TextView salesman_edit_target,target_edit_target,start_date_edit_target,end_date_edit_target;
+    //sku
+    TextView company_sku_expandable,category_sku_expandable,product_name_sku_expandable, product_size_sku_expandable;
 
-    //variables
+        //variables
     String startDateString ,endDateString;
     private Date startDate,endDate;
 
@@ -67,7 +71,7 @@ public class Edit_fragment_Fragment extends Fragment {
     //database reference
     private DatabaseReference skuReference,targetReference, salesMenRefernce;
     //splash screen relative layout
-    private RelativeLayout rellay1, rally3, rellay2;
+    private RelativeLayout rellay1, rally3, rellay2,main_view;
 
     //array adapters for the dropdown lists
     private ArrayAdapter<Sku> skuArrayAdapter;
@@ -80,14 +84,22 @@ public class Edit_fragment_Fragment extends Fragment {
     private ArrayList<Target> targetList;
 
     //handler for the splash screen
+    private  Handler recycleViewHandler =new Handler();
+    private  Runnable recycleViewRunnabe =new Runnable() {
+        @Override
+        public void run() {
+      main_view.setVisibility(View.VISIBLE);
+        }
+    };
     private Handler handler = new Handler();
+
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
 
-//            rellay1.setVisibility(View.VISIBLE);
-           // rellay2.setVisibility(View.VISIBLE);
-           // rally3.setVisibility(View.VISIBLE);
+            rellay1.setVisibility(View.VISIBLE);
+            rellay2.setVisibility(View.VISIBLE);
+            rally3.setVisibility(View.VISIBLE);
 
         }
     };
@@ -124,18 +136,19 @@ public class Edit_fragment_Fragment extends Fragment {
 
         v=new View(getContext());
 
-       // rellay1 = v.findViewById(R.id.target_edit_layout);
-        //rally3 = v.findViewById(R.id.adding_target_bottom_edit);
-
+        //  rellay1 = v.findViewById(R.id.target_edit_layout);
+      //  rally3 = v.findViewById(R.id.adding_target_bottom_edit);
+        main_view=v.findViewById(R.id.main_view);
+        recycleViewHandler.postDelayed(recycleViewRunnabe,500);
         //splash screen
-        handler.postDelayed(runnable, 500);
+//        handler.postDelayed(runnable, 500);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view= inflater.inflate(R.layout.fragment_edit_, container, false);
+        view= inflater.inflate(R.layout.fragment_edit_target, container, false);
 
         //initializing lists
         skuList = new ArrayList<>();
@@ -145,15 +158,6 @@ public class Edit_fragment_Fragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
-       // recyclerViewAdapter.setArticles(targetList);
-       /* recyclerViewAdapter.setItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClicked(int pos) {
-                layoutManager.openItem(pos);
-            }
-        });
-*/
         //initializing database reference for downloading and uploading the data the data
         skuReference = FirebaseDatabase.getInstance().getReference("SKU");
         targetReference= FirebaseDatabase.getInstance().getReference("TARGET");
@@ -162,21 +166,85 @@ public class Edit_fragment_Fragment extends Fragment {
         skuReference.keepSynced(true);
         targetReference.keepSynced(true);
         salesMenRefernce.keepSynced(true);
-/*
+
         //relative layouts
         rellay1 = view.findViewById(R.id.target_edit_layout);
         rellay2=view.findViewById(R.id.adding_sku_rellay2_edit);
         rally3 = view.findViewById(R.id.adding_target_bottom_edit);
+        main_view=view.findViewById(R.id.main_view);
+
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        // do whatever
+                        headerIndicator=(ImageView)view.findViewById(R.id.headerIndicator);
+                        expansionLayout=(ExpansionLayout) view.findViewById(R.id.expansionLayout);
+
+                       // if(headerIndicator.isPressed())
+                            {
+                                //expansionLayout.setVisibility(View.VISIBLE);
+                            }
+                            //else{
+                             //   expansionLayout.setVisibility(View.GONE);
+                         //   }
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                        ViewGroup viewGroup = view.findViewById(android.R.id.content);
+                        View dialogView = LayoutInflater.from(view.getContext()).inflate(R.layout.edit_target_dialog_layout, viewGroup, false);
+
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                        builder.setView(dialogView);
+
+                        salesman_edit_target = (TextView) dialogView.findViewById(R.id.salesman_edit_target_details);
+                        target_edit_target = (TextView) dialogView.findViewById(R.id.target_edit_target_details);
+                        start_date_edit_target=(TextView) dialogView.findViewById(R.id.start_date_edit_target_details);
+                        end_date_edit_target=(TextView) dialogView.findViewById(R.id.end_date_edit_target_details);
+                        //sku
+                        company_sku_expandable= (TextView) dialogView.findViewById(R.id.company_sku_expandable);
+                        category_sku_expandable= (TextView) dialogView.findViewById(R.id.category_sku_expandable);
+                        product_name_sku_expandable= (TextView) dialogView.findViewById(R.id.product_name_sku_expandable);
+                        product_size_sku_expandable= (TextView) dialogView.findViewById(R.id.product_size_sku_expandable);
 
 
+                        salesman_edit_target.setText(targetList.get(position).getSalesmenEmail());
+                        target_edit_target.setText(String.valueOf(  targetList.get(position).getTARGET()));
+                        start_date_edit_target.setText(targetList.get(position).getStartDateString());
+                        end_date_edit_target.setText(targetList.get(position).getEndDateString());
+//sku
+                        company_sku_expandable.setText(targetList.get(position).getSKU().getCompany().getName());
+                        category_sku_expandable.setText(targetList.get(position).getSKU().getCatagory().getName());
+                        product_name_sku_expandable.setText(targetList.get(position).getSKU().getProductName());
+                        product_size_sku_expandable.setText(String.valueOf(targetList.get(position).getSKU().getSize()));
+
+                        final AlertDialog alertDialog = builder.create();
+
+                        Button dialog_yes_Button = (Button)dialogView.findViewById(R.id.edit_target_button);
+                        dialog_yes_Button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                alertDialog.dismiss();
+
+                            }
+                        }); Button dialog_no_Button = (Button)dialogView.findViewById(R.id.cancel_edit_target_button);
+                        dialog_no_Button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                alertDialog.dismiss();
+                                //Fragment fragment=new View_Today_Report_Fragment();
+                            }
+                        });
+
+                        alertDialog.show();
+                    }
+                })
+        );
 
         //progress bar
         progressBar = view.findViewById(R.id.edit_fragment_my_progress_bar);
         progressBarh.postDelayed(runnable1, 0);
 
-        //initializing the spinners
-        skuSpinner =  view.findViewById(R.id.target_edit_Sku_spinner);
-        salesmenSpinner=view.findViewById(R.id.target_edit_SalesMen_spinner);
         //setting the array adapters
         skuArrayAdapter = new ArrayAdapter(getContext(),  R.layout.spinner_text, skuList);
         skuArrayAdapter.setDropDownViewResource(R.layout.spinner_text_dropdown);
@@ -185,50 +253,8 @@ public class Edit_fragment_Fragment extends Fragment {
         salesmanIdArrayAdapter.setDropDownViewResource(R.layout.spinner_text_dropdown);
 
         add_target_et= view.findViewById(R.id.edit_target_et);
-        //show Target button initialization and on click listener
 
-        //MaterialDatePicker
-        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC+05:00"));
-        calendar.clear();
-
-        final long today = MaterialDatePicker.todayInUtcMilliseconds();
-
-        calendar.setTimeInMillis(today);
-
-
-        DateBuilder=MaterialDatePicker.Builder.dateRangePicker();
-        DateBuilder.setTitleText("Select Date Range ");
-        DateMaterialDatePicker=MaterialDatePicker.Builder.dateRangePicker().setTheme(R.style.ThemeOverlay_MaterialComponents_MaterialCalendar).build();
-
-        DateMaterialDatePicker.clearOnPositiveButtonClickListeners();
-        DateMaterialDatePicker.clearOnCancelListeners();
-        final int[] selected_Sku = {0};
-        DateMaterialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
-            @Override
-            public void onPositiveButtonClick(Object selection) {
-                String end_date=selection.toString();
-                String[] result = end_date.split("\\s");
-                //getting start date
-                String start=result[0].substring(5,result[0].length());
-                startDate=new Date(Long.parseLong(start));
-                startDateString=dateToString(startDate);
-                // getting End date
-                String end=result[1].substring(0,result[1].length()-1);
-                endDate=new Date(Long.parseLong(end));
-                endDateString=dateToString(endDate);
-                // Toast.makeText(getContext(),endDateString,Toast.LENGTH_LONG).show();
-            }
-        });
-        select_date_button=view.findViewById(R.id.select_date_button_edit);
-
-        select_date_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DateMaterialDatePicker.show(getActivity().getSupportFragmentManager(),"Select End Date");
-
-            }
-        });
-        add_target_button =  view.findViewById(R.id.edit_target_button);
+       /* add_target_button =  view.findViewById(R.id.edit_target_button);
         add_target_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -267,6 +293,7 @@ public class Edit_fragment_Fragment extends Fragment {
                 progressBarh.postDelayed(runnable1,500);
             }
         });*/
+
         return  view;
     }
     private String dateToString(Date date)
@@ -296,37 +323,6 @@ public class Edit_fragment_Fragment extends Fragment {
                 }
                 recyclerViewAdapter=new RecyclerViewAdapter(targetList, (Activity) getContext());
                 recyclerView.setAdapter(recyclerViewAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        skuReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                skuList.clear();
-                for (DataSnapshot sku : dataSnapshot.getChildren()) {
-                    skuList.add(sku.getValue(Sku.class));
-                }
-//                skuSpinner.setAdapter(skuArrayAdapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getContext(), "Error in download ing the data", Toast.LENGTH_SHORT).show();
-            }
-        });
-        salesMenRefernce.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                salesmanIdList.clear();
-                for (DataSnapshot salesmen : dataSnapshot.getChildren())
-                {
-                    salesmanIdList.add(salesmen.getValue(SalesmanId.class));
-                }
-               // salesmenSpinner.setAdapter(salesmanIdArrayAdapter);
             }
 
             @Override

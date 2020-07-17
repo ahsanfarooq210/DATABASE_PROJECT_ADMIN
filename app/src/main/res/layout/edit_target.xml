@@ -12,7 +12,6 @@
     card_view:cardCornerRadius="8dp"
     card_view:contentPadding="10dp"
     android:foreground="?selectableItemBackground"
-    android:clickable="true"
     app:ignore="NamespaceTypo">
 <RelativeLayout
     android:layout_width="match_parent"
@@ -165,52 +164,6 @@
         </LinearLayout>
 
     </LinearLayout>
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/upper_linearLayout">
-
-        <Button
-            android:id="@+id/cancel_button_edit_target"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_below="@+id/linlay1"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/btn_bg"
-            android:clickable="true"
-            android:fontFamily="sans-serif-medium"
-
-            android:text="Cancel"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/edit_button_edit_target"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_below="@+id/linlay1"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/btn_bg"
-            android:clickable="true"
-            android:fontFamily="sans-serif-medium"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:text="Edit"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
-
-
 
 </RelativeLayout>
 </androidx.cardview.widget.CardView>
