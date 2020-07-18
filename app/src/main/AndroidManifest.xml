@@ -23,7 +23,7 @@
             android:name=".Target.activities.add_target_activity"
             android:label=""
             android:windowSoftInputMode="stateHidden|adjustResize"
-            android:theme="@style/AppTheme.appCompat" />
+            android:theme="@style/AppTheme.MaterialComponents" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

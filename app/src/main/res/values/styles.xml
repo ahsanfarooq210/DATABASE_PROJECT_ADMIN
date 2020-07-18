@@ -9,7 +9,7 @@
     </style> <!-- Base application theme. -->
 
     <!-- Base application theme. -->
-    <style name="AppTheme.appCompat" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme.MaterialComponents" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
