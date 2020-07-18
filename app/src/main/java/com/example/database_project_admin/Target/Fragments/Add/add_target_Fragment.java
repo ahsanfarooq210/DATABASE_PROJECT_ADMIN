@@ -263,7 +263,7 @@ return  view;
     @Override
     public void onStart() {
         super.onStart();
-targetReference.addValueEventListener(new ValueEventListener() {
+/*targetReference.addValueEventListener(new ValueEventListener() {
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         targetList.clear();
@@ -277,7 +277,7 @@ targetReference.addValueEventListener(new ValueEventListener() {
     public void onCancelled(@NonNull DatabaseError databaseError) {
 
     }
-});
+});*/
            skuReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

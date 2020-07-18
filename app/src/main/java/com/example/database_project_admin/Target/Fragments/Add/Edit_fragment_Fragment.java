@@ -22,6 +22,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.database_project_admin.Entity.SalesmanId;
 import com.example.database_project_admin.Entity.Sku;
@@ -66,8 +67,8 @@ public class Edit_fragment_Fragment extends Fragment {
     private MaterialDatePicker.Builder DateBuilder;
     private MaterialDatePicker DateMaterialDatePicker;
 
-    private EditText add_target_et;
-    private Button add_target_button,select_date_button;
+    private EditText edit_target_et;
+
     //database reference
     private DatabaseReference skuReference,targetReference, salesMenRefernce;
     //splash screen relative layout
@@ -177,8 +178,8 @@ public class Edit_fragment_Fragment extends Fragment {
                 new RecyclerItemClickListener(getContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         // do whatever
-                        headerIndicator=(ImageView)view.findViewById(R.id.headerIndicator);
-                        expansionLayout=(ExpansionLayout) view.findViewById(R.id.expansionLayout);
+                       // headerIndicator=(ImageView)view.findViewById(R.id.headerIndicator);
+                      //  expansionLayout=(ExpansionLayout) view.findViewById(R.id.expansionLayout);
 
                        // if(headerIndicator.isPressed())
                             {
@@ -189,8 +190,9 @@ public class Edit_fragment_Fragment extends Fragment {
                          //   }
                     }
 
-                    @Override public void onLongItemClick(View view, int position) {
+                    @Override public void onLongItemClick(View view, final int position) {
                         // do whatever
+
                         ViewGroup viewGroup = view.findViewById(android.R.id.content);
                         View dialogView = LayoutInflater.from(view.getContext()).inflate(R.layout.edit_target_dialog_layout, viewGroup, false);
 
@@ -218,13 +220,44 @@ public class Edit_fragment_Fragment extends Fragment {
                         product_name_sku_expandable.setText(targetList.get(position).getSKU().getProductName());
                         product_size_sku_expandable.setText(String.valueOf(targetList.get(position).getSKU().getSize()));
 
+                        edit_target_et=dialogView.findViewById(R.id.edit_target_et);
+
                         final AlertDialog alertDialog = builder.create();
 
-                        Button dialog_yes_Button = (Button)dialogView.findViewById(R.id.edit_target_button);
-                        dialog_yes_Button.setOnClickListener(new View.OnClickListener() {
+                        Button edit_target_button = (Button)dialogView.findViewById(R.id.edit_target_button);
+                        edit_target_button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+
+                                if(edit_target_et.getText().length()==0)
+                                {
+                                    edit_target_et.setError("Please Enter suitable Target value for Selected Sku ");
+                                    progressBarh.postDelayed(runnable1,500);
+                                    return;
+                                }
+                                int  add_target=Integer.parseInt(edit_target_et.getText().toString().trim());
+                                if(add_target==0)
+                                {
+                                    edit_target_et.setError("Please Enter suitable Target value for Selected Sku ");
+                                    progressBarh.postDelayed(runnable1,500);
+                                    return;
+                                }
+                                progressBar.setVisibility(View.VISIBLE);
+                                String TargetID=targetList.get(position).getTARGET_ID();
+                                int updateTarget=Integer.parseInt( edit_target_et.getText().toString().trim());
+                                targetReference.child(TargetID).child("target").setValue(updateTarget);
+                                    edit_target_et.setText("");
+
+
+                                {
+                                    Toast.makeText(getContext(),
+                                            "New Target updated ",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+
+                                progressBarh.postDelayed(runnable1,500);
                                 alertDialog.dismiss();
+
 
                             }
                         }); Button dialog_no_Button = (Button)dialogView.findViewById(R.id.cancel_edit_target_button);
@@ -252,47 +285,8 @@ public class Edit_fragment_Fragment extends Fragment {
         salesmanIdArrayAdapter=new ArrayAdapter<>(getContext(),R.layout.spinner_text,salesmanIdList);
         salesmanIdArrayAdapter.setDropDownViewResource(R.layout.spinner_text_dropdown);
 
-        add_target_et= view.findViewById(R.id.edit_target_et);
+        edit_target_et= view.findViewById(R.id.edit_target_et);
 
-       /* add_target_button =  view.findViewById(R.id.edit_target_button);
-        add_target_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Sku sku = (Sku) skuSpinner.getSelectedItem();
-                SalesmanId salesmanId=(SalesmanId) salesmenSpinner.getSelectedItem();
-                if(add_target_et.getText().length()==0)
-                {
-                    add_target_et.setError("Please Enter suitable Target value for Selected Sku ");
-                    progressBarh.postDelayed(runnable1,500);
-                    return;
-                }
-                int  add_target=Integer.parseInt(add_target_et.getText().toString().trim());
-                if(add_target==0)
-                {
-                    add_target_et.setError("Please Enter suitable Target value for Selected Sku ");
-                    progressBarh.postDelayed(runnable1,500);
-                    return;
-                }
-                progressBar.setVisibility(View.VISIBLE);
-
-                String id=targetReference.push().getKey();
-                Target target=new Target(id,sku,sku.getId(),salesmanId.getEmail(),add_target,startDateString,endDateString);
-                if(id!=null)
-                {
-                    targetReference.child(id).setValue(target);
-                    add_target_et.setText("");
-                }
-                else
-                {
-                    Toast.makeText(getContext(),
-                            "Error \n string id=null \n contact developer immediately",
-                            Toast.LENGTH_SHORT).show();
-                }
-
-                progressBarh.postDelayed(runnable1,500);
-            }
-        });*/
 
         return  view;
     }
