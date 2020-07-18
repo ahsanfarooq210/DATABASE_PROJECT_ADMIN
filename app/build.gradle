@@ -92,7 +92,8 @@ dependencies {
 
     //noinspection GradleCompatible,GradleCompatible
     implementation  'com.android.support:design:28.0.0'
-
+    //noinspection GradleCompatible,GradleCompatible
+    implementation 'com.android.support:design:25.3.1'
 //expand pane
     implementation 'com.github.florent37:expansionpanel:1.2.4'
 }

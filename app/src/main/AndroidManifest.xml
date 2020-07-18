@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Show_salesman_activity"></activity>
+        <activity android:name=".Activities.Show_salesman_activity" />
         <activity
             android:name=".Target.activities.target_details_activity"
             android:label=""
@@ -23,7 +23,7 @@
             android:name=".Target.activities.add_target_activity"
             android:label=""
             android:windowSoftInputMode="stateHidden|adjustResize"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.appCompat" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -77,7 +77,8 @@
         </activity>
         <activity
             android:name=".Activities.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize">
         <intent-filter>
         <action android:name="android.intent.action.MAIN" />
 
