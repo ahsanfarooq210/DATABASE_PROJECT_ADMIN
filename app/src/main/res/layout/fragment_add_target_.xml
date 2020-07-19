@@ -57,32 +57,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-
                     android:layout_margin="15dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="sans-serif-medium"
-                        android:text="Select SKU"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="15sp" />
-
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@drawable/et_bg"
-                        android:layout_marginTop="10dp"
-                        android:id="@+id/target_add_Sku_spinner"
-                        android:fontFamily="sans-serif-light"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:animateLayoutChanges="true"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -92,19 +68,88 @@
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="15sp" />
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@drawable/et_bg"
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="top|left"
+                        >
+                        <Spinner
+                            android:id="@+id/target_add_SalesMen_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@drawable/et_bg"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="sans-serif-light"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:animateLayoutChanges="true"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp" />
+
+                        <!-- Fake TextView to use to set in an error state to allow an error to be shown for the TextView -->
+                        <android.widget.TextView
+                            android:id="@+id/target_add_SalesMen_spinner_Error"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_alignRight="@+id/target_add_SalesMen_spinner"
+                            android:layout_alignBottom="@+id/target_add_SalesMen_spinner"
+                            android:layout_marginTop="0dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="50dp"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            />
+
+                    </RelativeLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:id="@+id/target_add_SalesMen_spinner"
-                        android:fontFamily="sans-serif-light"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:animateLayoutChanges="true"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/white"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="Select SKU"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
                         android:textSize="15sp" />
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="top|left"
+                        >
+
+                        <Spinner
+                            android:id="@+id/target_add_Sku_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@drawable/et_bg"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="sans-serif-light"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:animateLayoutChanges="true"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp"
+                            />
+
+                        <!-- Fake TextView to use to set in an error state to allow an error to be shown for the TextView -->
+                        <android.widget.TextView
+                            android:id="@+id/target_add_Sku_spinner_Error"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_alignRight="@+id/target_add_Sku_spinner"
+                            android:layout_alignBottom="@+id/target_add_Sku_spinner"
+                            android:layout_marginTop="0dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="50dp"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            />
+
+                    </RelativeLayout>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -128,20 +173,44 @@
                         android:textColorHint="@android:color/white"
                         android:textColor="@android:color/white"
                         android:textSize="15sp" />
-
-                    <Button
-                        android:layout_width="match_parent"
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:background="@drawable/btn_bg"
-                        android:fontFamily="sans-serif-medium"
-                        android:paddingLeft="40dp"
-                        android:paddingRight="40dp"
-                        android:text="Select Date for Target"
-                        android:id="@+id/select_date_button"
-                        android:textAllCaps="false"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp" />
+                        android:gravity="top|left"
+                        >
+
+                        <Button
+                            android:id="@+id/select_date_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/btn_bg"
+                            android:fontFamily="sans-serif-medium"
+                            android:paddingLeft="40dp"
+                            android:paddingRight="40dp"
+                            android:text="Select Date for Target"
+
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="20sp" />
+
+                        <!-- Fake TextView to use to set in an error state to allow an error to be shown for the TextView -->
+                        <android.widget.TextView
+                            android:id="@+id/select_date_button_Error"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_alignRight="@+id/select_date_button"
+                            android:layout_alignBottom="@+id/select_date_button"
+                            android:layout_marginTop="0dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="50dp"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            />
+
+                    </RelativeLayout>
+
+
 
                 </LinearLayout>
 

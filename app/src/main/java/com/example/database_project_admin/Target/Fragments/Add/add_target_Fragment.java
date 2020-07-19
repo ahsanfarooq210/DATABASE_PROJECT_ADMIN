@@ -1,5 +1,6 @@
 package com.example.database_project_admin.Target.Fragments.Add;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,14 +8,17 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.database_project_admin.Entity.SalesmanId;
@@ -71,6 +75,15 @@ String startDateString ,endDateString;
     private List<SalesmanId> salesmanIdList;
     private List<Target> targetList;
 
+    boolean spinner_sku = false, spinner_salesmen=false, range_button=false;
+    AdapterView.OnItemSelectedListener skuSpinnerSelectedListener,salesMenSpinnerSelectedListener ;
+    TextView target_add_Sku_spinner_Error,target_add_SalesMen_spinner_Error,select_date_button_Error;
+    View sku_view ;
+    View salesmen_view;
+    View RangeButtonView;
+    TextView tvListItem_sku ;
+    TextView tvListItem_salesmen ;
+    TextView textView_button;
     //handler for the splash screen
     private Handler handler = new Handler();
     private Runnable runnable = new Runnable() {
@@ -101,6 +114,8 @@ String startDateString ,endDateString;
     private FirebaseUser user;
     View view;
     View v;
+
+
     public add_target_Fragment() {
         // Required empty public constructor
     }
@@ -160,6 +175,11 @@ String startDateString ,endDateString;
         salesmanIdArrayAdapter=new ArrayAdapter<>(getContext(),R.layout.spinner_text,salesmanIdList);
         salesmanIdArrayAdapter.setDropDownViewResource(R.layout.spinner_text_dropdown);
 
+        target_add_SalesMen_spinner_Error=view.findViewById(R.id.target_add_SalesMen_spinner_Error);
+
+        target_add_Sku_spinner_Error=view.findViewById(R.id.target_add_Sku_spinner_Error);
+        select_date_button_Error=view.findViewById(R.id.select_date_button_Error);
+
         add_target_et= view.findViewById(R.id.add_target_et);
         //show Target button initialization and on click listener
 
@@ -193,7 +213,20 @@ String startDateString ,endDateString;
                 String end=result[1].substring(0,result[1].length()-1);
                 endDate=new Date(Long.parseLong(end));
                 endDateString=dateToString(endDate);
+                range_button=true;
+
                 // Toast.makeText(getContext(),endDateString,Toast.LENGTH_LONG).show();
+
+            }
+        });
+        DateMaterialDatePicker.addOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                DateMaterialDatePicker.clearOnCancelListeners();
+                DateMaterialDatePicker.clearOnPositiveButtonClickListeners();
+                DateMaterialDatePicker.clearOnDismissListeners();
+               // DateMaterialDatePicker.dismiss();
+                DateMaterialDatePicker.getDialog().cancel();
             }
         });
         select_date_button=view.findViewById(R.id.select_date_button);
@@ -202,49 +235,169 @@ String startDateString ,endDateString;
             @Override
             public void onClick(View v) {
                 DateMaterialDatePicker.show(getActivity().getSupportFragmentManager(),"Select End Date");
-
+                select_date_button_Error.setVisibility(View.GONE);
+                select_date_button.setError(null);
             }
         });
+
+spinner_salesmen=false;
+spinner_sku=false;
+skuSpinner.setOnTouchListener(new View.OnTouchListener() {
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        spinner_sku = true;
+        return false;
+    }
+});
+salesmenSpinner.setOnTouchListener(new View.OnTouchListener() {
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        spinner_salesmen = true;
+        return false;
+    }
+});
+      skuSpinnerSelectedListener = new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> spinner, View container, int position, long id) {
+                if (spinner_sku)
+                {
+                    target_add_Sku_spinner_Error.setVisibility(View.GONE);
+                }
+                else if (!spinner_sku)
+                {
+                    SetError("Please Select Sales SKU First ","SKU");
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+                spinner_sku=false;
+            }
+        };
+        salesMenSpinnerSelectedListener = new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> spinner, View container, int position, long id) {
+                if (spinner_salesmen)
+                {
+                    target_add_SalesMen_spinner_Error.setVisibility(View.GONE);
+                }
+                else if (!spinner_salesmen)
+                {
+                    SetError("Please Select Sales Men First ","SALESMEN");
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+                spinner_salesmen=false;
+            }
+        };
+
+
         add_target_button =  view.findViewById(R.id.add_target_button);
         add_target_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                skuSpinner.setOnItemSelectedListener(skuSpinnerSelectedListener);
+                salesmenSpinner.setOnItemSelectedListener(salesMenSpinnerSelectedListener);
+                if(!spinner_sku)
+                {
+                    SetError("Please Select Sales SKU First ","SKU");
 
-                Sku sku = (Sku) skuSpinner.getSelectedItem();
-                SalesmanId salesmanId=(SalesmanId) salesmenSpinner.getSelectedItem();
-                if(add_target_et.getText().length()==0)
-                {
-                    add_target_et.setError("Please Enter suitable Target value for Selected Sku ");
-                    progressBarh.postDelayed(runnable1,500);
-                    return;
                 }
-                int  add_target=Integer.parseInt(add_target_et.getText().toString().trim());
-                if(add_target==0)
+                if( !spinner_salesmen)
                 {
-                    add_target_et.setError("Please Enter suitable Target value for Selected Sku ");
-                    progressBarh.postDelayed(runnable1,500);
-                    return;
+                    SetError("Please Select Sales Men First ","SALESMEN");
                 }
-                progressBar.setVisibility(View.VISIBLE);
+                if(spinner_sku&& spinner_salesmen) {
 
-                String id=targetReference.push().getKey();
-               Target target=new Target(id,sku,sku.getId(),salesmanId.getEmail(),add_target,startDateString,endDateString);
-                if(id!=null)
-                {
-                  targetReference.child(id).setValue(target);
-                  add_target_et.setText("");
-                }
-                else
-                {
-                    Toast.makeText(getContext(),
-                            "Error \n string id=null \n contact developer immediately",
-                            Toast.LENGTH_SHORT).show();
-                }
+                    Sku sku = (Sku) skuSpinner.getSelectedItem();
+                    SalesmanId salesmanId = (SalesmanId) salesmenSpinner.getSelectedItem();
+                    if (add_target_et.getText().length() == 0) {
+                        add_target_et.setError("Please Enter suitable Target value for Selected Sku ");
+                        progressBarh.postDelayed(runnable1, 500);
+                        return;
+                    }
+                    int add_target = Integer.parseInt(add_target_et.getText().toString().trim());
+                    if (add_target == 0) {
+                        add_target_et.setError("Please Enter suitable Target value for Selected Sku ");
+                        progressBarh.postDelayed(runnable1, 500);
+                        return;
+                    }
 
-                progressBarh.postDelayed(runnable1,500);
+                    if(!range_button)
+                    {
+                        select_date_button.setError("Please Select Range For Target First ");
+                        SetError("Please Select Range For Target First ", "RANGE_BUTTON");
+                        return;
+                    }
+                    progressBar.setVisibility(View.VISIBLE);
+                    String id = targetReference.push().getKey();
+
+                    Target target = new Target(id, sku, sku.getId(), salesmanId.getEmail(), add_target, startDateString, endDateString);
+                    if (id != null) {
+                        targetReference.child(id).setValue(target);
+                        add_target_et.setText("");
+                    } else {
+                        Toast.makeText(getContext(),
+                                "Error \n string id=null \n contact developer immediately",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    range_button=spinner_sku=spinner_salesmen=false;
+                    skuSpinner.setSelection(0);
+                    salesmenSpinner.setSelection(0);
+
+                    progressBarh.postDelayed(runnable1, 500);
+                    rellay1.setVisibility(View.GONE);
+                    rellay2.setVisibility(View.GONE);
+                    rally3.setVisibility(View.GONE);
+                    handler.postDelayed(runnable, 500);
+                }
             }
         });
 return  view;
+    }
+    public void SetError(String errorMessage,String FOR)
+    {
+        skuSpinner.getSelectedView();
+        salesmenSpinner.getSelectedView();
+        tvListItem_sku = (TextView)sku_view;
+        tvListItem_salesmen = (TextView)salesmen_view;
+        textView_button=(TextView)RangeButtonView;
+        if(errorMessage != null)
+        {   //
+            if(FOR.equals("SKU")) {
+
+                target_add_Sku_spinner_Error.requestFocus();
+                target_add_Sku_spinner_Error.setError(errorMessage);
+            }
+            else if(FOR.equals("SALESMEN"))
+            {
+
+                target_add_SalesMen_spinner_Error.requestFocus();
+                target_add_SalesMen_spinner_Error.setError(errorMessage);
+            }
+            else if (FOR.equals("RANGE_BUTTON"))
+            {
+                select_date_button_Error.requestFocus();
+                select_date_button_Error.setError(errorMessage);
+            }
+
+        }
+        else
+        {
+            tvListItem_sku.setError(null);
+            tvListItem_salesmen.setError(null);
+            target_add_Sku_spinner_Error.setError(null);
+            target_add_SalesMen_spinner_Error.setError(null);
+        }
     }
     private String dateToString(Date date)
     {
