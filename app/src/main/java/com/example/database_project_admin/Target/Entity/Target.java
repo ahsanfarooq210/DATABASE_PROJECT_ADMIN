@@ -9,16 +9,16 @@ public class Target {
    int TARGET;
    String salesmenEmail;
    String startDateString ,endDateString;
-   String SKU_ID;
+   String skuID;
 
     public Target() {
     }
 
-    public Target(String TARGET_ID, Sku SKU,String SKU_ID,String salesmenEmail, int TARGET, String startDateString ,String endDateString) {
+    public Target(String TARGET_ID, Sku SKU,String skuID,String salesmenEmail, int TARGET, String startDateString ,String endDateString) {
         this.TARGET_ID = TARGET_ID;
         this.SKU = SKU;
         this.TARGET = TARGET;
-        this.SKU_ID=SKU_ID;
+        this.skuID=skuID;
         this.salesmenEmail=salesmenEmail;
         this.startDateString = startDateString ;
         this.endDateString =endDateString;
@@ -49,12 +49,12 @@ public class Target {
         this.endDateString = endDateString;
     }
 
-    public String getSKU_ID() {
-        return SKU_ID;
+    public String getskuID() {
+        return skuID;
     }
 
-    public void setSKU_ID(String SKU_ID) {
-        this.SKU_ID = SKU_ID;
+    public void setskuID(String skuID) {
+        this.skuID = skuID;
     }
 
     public String getTARGET_ID() {

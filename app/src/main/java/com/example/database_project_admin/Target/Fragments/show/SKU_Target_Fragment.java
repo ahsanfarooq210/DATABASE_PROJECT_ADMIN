@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -55,8 +57,9 @@ public class SKU_Target_Fragment extends Fragment {
     private ArrayAdapter<Sku> skuArrayAdapter;
     //dropdowns spinners
     private Spinner skuSpinner;
-
-
+    AdapterView.OnItemSelectedListener skuSpinnerSelectedListener;
+    TextView show_target_sku_spinner_Error;
+boolean show_target_sku_spinner=false;
     //handler for the splash screen
     private Handler handler = new Handler();
     private Runnable runnable = new Runnable()
@@ -86,10 +89,11 @@ public class SKU_Target_Fragment extends Fragment {
     //array lists for the array adapters
     private List<Sku> skuList;
     List<Target> targetlist;
+    List<Target_SalesMen> target_salesMenList;
     //to get the email id of the salesman
     private FirebaseAuth auth;
     private FirebaseUser user;
-
+TextView id;
     View view;
     View v;
     Sku skuSelected;
@@ -122,14 +126,14 @@ public class SKU_Target_Fragment extends Fragment {
         targetlist=new ArrayList<>();
         //initializing database reference for downloading and uploading the data the data
         skuReference = FirebaseDatabase.getInstance().getReference("SKU");
-        targetReference= FirebaseDatabase.getInstance().getReference("TARGET");
+        targetReference= FirebaseDatabase.getInstance().getReference().child("TARGET");
         //synchronizing the database for the offline use
         skuReference.keepSynced(true);
         targetReference.keepSynced(true);
         //progess bar
         circularProgressbar_overAll=view.findViewById(R.id.circularProgressbar_overAll_sku);
         textView_overAll=view.findViewById(R.id.textView_overAll_sku);
-
+        id=view.findViewById(R.id.id);
 
         rellay1 = view.findViewById(R.id.target_show_sku_layout);
         rally3 = view.findViewById(R.id.target_sku_bottom_rally2);
@@ -140,15 +144,52 @@ public class SKU_Target_Fragment extends Fragment {
         //setting the array adapters
         skuArrayAdapter = new ArrayAdapter(getContext(),  R.layout.spinner_text, skuList);
         skuArrayAdapter.setDropDownViewResource(R.layout.spinner_text_dropdown);
+        show_target_sku_spinner=false;
+        show_target_sku_spinner_Error=view.findViewById(R.id.show_target_sku_spinner_Error);
+        skuSpinner.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                 show_target_sku_spinner= true;
+                return false;
+            }
+        });
+        skuSpinnerSelectedListener = new AdapterView.OnItemSelectedListener() {
+
+            @Override
+            public void onItemSelected(AdapterView<?> spinner, View container, int position, long id) {
+                if (show_target_sku_spinner)
+                {
+                    show_target_sku_spinner_Error.setVisibility(View.GONE);
+                }
+                else if (!show_target_sku_spinner)
+                {
+                    SetError("Please Select Sales SKU First ");
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                // TODO Auto-generated method stub
+                show_target_sku_spinner=false;
+            }
+        };
 
         //show Target button initialization and on click listener
         show_target_sku_button =  view.findViewById(R.id.show_target_sku_button);
+
         show_target_sku_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                 skuSelected = (Sku) skuSpinner.getSelectedItem();
-                Query q =FirebaseDatabase.getInstance().getReference("TARGET").orderByChild("SKU_ID").equalTo(skuSelected.getId());
+                skuSpinner.setOnItemSelectedListener(skuSpinnerSelectedListener);
+                if(!show_target_sku_spinner)
+                {
+                    SetError("Please Select Sales SKU First ");
+                }
+                if(show_target_sku_spinner)
+                {
+                skuSelected = (Sku) skuSpinner.getSelectedItem();
+               /* Query q =FirebaseDatabase.getInstance().getReference().child("TARGET").orderByChild("salesmenEmail").equalTo("salesman5@gmail.com");
                 q.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -163,10 +204,29 @@ public class SKU_Target_Fragment extends Fragment {
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
-                });
-                final List<Target_SalesMen> target_salesMenList;
+                });*/
+
+               targetReference.addValueEventListener(new ValueEventListener() {
+                   @Override
+                   public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                       targetlist.clear();
+                       for (DataSnapshot target : dataSnapshot.getChildren())
+                       {
+                           if(target.getValue(Target.class).getskuID().equals(skuSelected.getId()))
+                           {
+                               targetlist.add(target.getValue(Target.class));
+                           }
+                       }
+                   }
+
+                   @Override
+                   public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                   }
+               });
+                id.setText(targetlist.size()+"");
                 target_salesMenList=new ArrayList<>();
-                Query q1 =FirebaseDatabase.getInstance().getReference("Target_SalesMen").orderByChild("SKU_ID").equalTo(skuSelected.getId());
+                Query q1 =FirebaseDatabase.getInstance().getReference("Target_SalesMen").orderByChild("skuID").equalTo(skuSelected.getId());
                 q1.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -183,6 +243,7 @@ public class SKU_Target_Fragment extends Fragment {
                     }
                 });
                 int progres = 0;
+
                 for (int i=0; i<target_salesMenList.size(); i++) {
                     progres += target_salesMenList.get(i).getAchieved();
                 }
@@ -190,17 +251,35 @@ public class SKU_Target_Fragment extends Fragment {
                 for (int i=0; i<targetlist.size(); i++) {
                     total += targetlist.get(i).getTARGET();
                 }
+                    show_target_sku_spinner=false;
                 int  actualPercentage=(progres/total)*100;
                 circularProgressbar_overAll.setProgress(actualPercentage);
                 textView_overAll.setText(actualPercentage+"%");
                 progressBars.postDelayed(runnable1,500);
+                }
+
             }
         });
 
 
         return  view;
     }
+    public void SetError(String errorMessage)
+    {
+        skuSpinner.getSelectedView();
 
+        if(errorMessage != null)
+        {   //
+            show_target_sku_spinner_Error.requestFocus();
+            show_target_sku_spinner_Error.setError(errorMessage);
+
+        }
+        else
+        {
+            show_target_sku_spinner_Error.setError(null);
+            show_target_sku_spinner_Error.setError(null);
+        }
+    }
     @Override
     public void onStart() {
         super.onStart();

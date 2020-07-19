@@ -350,10 +350,13 @@ salesmenSpinner.setOnTouchListener(new View.OnTouchListener() {
                                 Toast.LENGTH_SHORT).show();
                     }
 
-                    range_button=spinner_sku=spinner_salesmen=false;
+                    range_button=false;
+                    spinner_salesmen=false;
+                    spinner_sku=false;
                     skuSpinner.setSelection(0);
                     salesmenSpinner.setSelection(0);
-
+                    spinner_sku=false;
+                    spinner_salesmen=false;
                     progressBarh.postDelayed(runnable1, 500);
                     rellay1.setVisibility(View.GONE);
                     rellay2.setVisibility(View.GONE);
