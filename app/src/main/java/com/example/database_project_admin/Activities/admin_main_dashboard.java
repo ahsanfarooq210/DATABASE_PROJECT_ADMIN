@@ -408,7 +408,8 @@ public void onBackPressed() {
     }
     public void targetDetails(View view)
 {
-    startActivity(new Intent(admin_main_dashboard.this, target_details_activity.class));
+    Toast.makeText(admin_main_dashboard.this,"Coming soon",Toast.LENGTH_LONG).show();
+   // startActivity(new Intent(admin_main_dashboard.this, target_details_activity.class));
 }public void editOrder(View view)
 {
    // startActivity(new Intent(admin_main_dashboard.this,target_details_activity.class));

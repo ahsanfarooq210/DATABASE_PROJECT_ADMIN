@@ -57,9 +57,9 @@ public class add_salesman_activity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_salesman_activity);
 
-        usernameTf=findViewById(R.id.username_tf);
-        passwordTf=findViewById(R.id.password_tf);
-        confirmPasswordTf=findViewById(R.id.confirm_password_tf);
+        usernameTf=findViewById(R.id.username_tf_add_salesMen);
+        passwordTf=findViewById(R.id.new_password_tf_add_salesMen);
+        confirmPasswordTf=findViewById(R.id.confirm_password_tf_add_salesMen);
         mAuth = FirebaseAuth.getInstance();
 
         rellay1 = findViewById(R.id.rellay1);
@@ -121,6 +121,7 @@ public class add_salesman_activity extends AppCompatActivity
                             confirmPasswordTf.setText("");
                             Toast.makeText(add_salesman_activity.this, "salesman created successfully", Toast.LENGTH_SHORT).show();
                             String id=salesmanReference.push().getKey();
+                            //boolean profileData=false;
                             SalesmanId salesman=new SalesmanId(id,email,password);
                             salesmanReference.child(id).setValue(salesman);
 
@@ -128,7 +129,7 @@ public class add_salesman_activity extends AppCompatActivity
                         } else {
                             // If sign in fails, display a message to the user.
                             progressBarh.postDelayed(runnable1,100);
-                            Toast.makeText(add_salesman_activity.this, "error in creating the salesman\nEnter again", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(add_salesman_activity.this, "error in creating the salesman\nTry again", Toast.LENGTH_SHORT).show();
 
                         }
 

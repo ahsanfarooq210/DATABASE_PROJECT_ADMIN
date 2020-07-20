@@ -13,6 +13,7 @@ public class SalesmanId
         this.id = id;
         this.email = email;
         this.password = password;
+
     }
 
     public String getId()

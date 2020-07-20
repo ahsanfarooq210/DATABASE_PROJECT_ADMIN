@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
             android:layout_below="@+id/imgView_logo"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/tv_login"
@@ -49,87 +49,88 @@
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
-                <LinearLayout
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@android:color/black"
+                        app:hintTextAppearance="@style/TextLabel"
+
+                        >
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/username_tf_add_salesMen"
+                            android:hint="Email"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="5dp"
+                            android:inputType="textEmailAddress"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ @._0123456789"
+                            android:fontFamily="sans-serif-light"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:background="@drawable/bg_edit_text"
+                            android:textColor="@android:color/black"
+                            android:textSize="15sp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="Username"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="15sp" />
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/black"
+                    app:hintTextAppearance="@style/TextLabel"
 
-                    <EditText
-                        android:id="@+id/username_tf"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@android:color/black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+
+                        android:id="@+id/new_password_tf_add_salesMen"
+                        android:hint="Password"
                         android:layout_width="match_parent"
-                        android:inputType="textEmailAddress"
-                        android:layout_height="40dp"
+                        android:layout_height="60dp"
                         android:layout_marginTop="5dp"
-                        android:background="@drawable/et_bg"
+                        android:inputType="textPassword"
+                        android:background="@drawable/bg_edit_text"
                         android:fontFamily="sans-serif-light"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ @._0123456789"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp"/>
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="Password"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="15sp" />
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/black"
+                    app:hintTextAppearance="@style/TextLabel"
 
-                    <EditText
-                        android:id="@+id/password_tf"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@android:color/black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+
+                        android:id="@+id/confirm_password_tf_add_salesMen"
+                        android:hint="Confirm Password"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
+                        android:layout_height="60dp"
                         android:layout_marginTop="5dp"
                         android:inputType="textPassword"
-                        android:background="@drawable/et_bg"
+                        android:background="@drawable/bg_edit_text"
                         android:fontFamily="sans-serif-light"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="confirm Password"
-                        android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="15sp" />
+                        android:textSize="15sp"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
-                        android:id="@+id/confirm_password_tf"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="5dp"
-                        android:inputType="textPassword"
-                        android:background="@drawable/et_bg"
-                        android:fontFamily="sans-serif-light"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp" />
-
-                </LinearLayout>
 
             </LinearLayout>
 
