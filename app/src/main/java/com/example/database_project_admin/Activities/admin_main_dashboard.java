@@ -29,14 +29,13 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.database_project_admin.ProfileActivities.activity_Edit_Profile;
-import com.example.database_project_admin.ProfileActivities.activity_View_Profile;
-import com.example.database_project_admin.ProfileActivities.notification_Activity;
-import com.example.database_project_admin.ProfileActivities.setting_activity;
+import com.example.database_project_admin.ProfileActivities.Activities.activity_Edit_Profile;
+import com.example.database_project_admin.ProfileActivities.Activities.activity_View_Profile;
+import com.example.database_project_admin.ProfileActivities.Activities.notification_Activity;
+import com.example.database_project_admin.ProfileActivities.Activities.setting_activity;
 
 import com.example.database_project_admin.R;
 import com.example.database_project_admin.Target.activities.add_target_activity;
-import com.example.database_project_admin.Target.activities.target_details_activity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;

@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:animateLayoutChanges="true"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:animateLayoutChanges="true">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -13,7 +13,8 @@
         android:layout_gravity="center"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:animateLayoutChanges="true">
 
 
         <ImageView
@@ -30,7 +31,7 @@
             android:layout_height="wrap_content"
             android:visibility="gone"
             android:layout_below="@id/profile_imgView_logo"
-            >
+            android:animateLayoutChanges="true">
 
             <TextView
                 android:id="@+id/tv_login"
@@ -47,185 +48,194 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_login"
                 android:orientation="vertical">
-
-                <LinearLayout
+                <ScrollView
+                    android:id="@+id/scrollView_edit_Profile"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
+                        android:orientation="vertical">
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
-                            android:text="@string/name"
-                            android:layout_weight="1.5"
-                            android:textAllCaps="true"
-                            android:gravity="center_horizontal"
-                            android:background="@drawable/back_btn_bg"
-                            android:textColor="@android:color/white"
-                            android:textSize="15sp"
-                            />
 
-                        <EditText
-                            android:layout_weight="1"
-                            android:gravity="center_horizontal"
-                            android:id="@+id/Name_EDITTEXT"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
-                            android:text="@string/name"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:textColor="@android:color/black"
-                            />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
+                            android:textColorHint="@android:color/black"
+                            app:hintTextAppearance="@style/TextLabel"
+
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+
+                                android:id="@+id/name_tf_edit_profile"
+                                android:hint="@string/name"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_marginTop="5dp"
+                                android:inputType="textEmailAddress"
+
+                                android:fontFamily="sans-serif-light"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
+                                android:background="@drawable/bg_edit_text"
+                                android:textColor="@android:color/black"
+                                android:textSize="15sp"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
-                            android:text="@string/cnic"
-                            android:textAllCaps="true"
-                            android:gravity="center_horizontal"
-                            android:background="@drawable/back_btn_bg"
-                            android:textColor="@android:color/white"
-                            android:textSize="15sp"
-                            android:layout_weight="1.5"
-                            />
-                        <EditText
-                            android:gravity="center_horizontal"
-                            android:layout_weight="1"
-                            android:id="@+id/Cnic_EDITTEXT"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
-                            android:text="@string/cnic"
-                            android:editable="false"
+
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:textColor="@android:color/black"
-                            />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
+                            android:textColorHint="@android:color/black"
+                            app:hintTextAppearance="@style/TextLabel"
+
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+
+                                android:id="@+id/cnic_tf_edit_profile"
+                                android:hint="CNIC : (Without Dashes)"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_marginTop="5dp"
+                                android:inputType="textEmailAddress"
+
+                                android:fontFamily="sans-serif-light"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
+                                android:background="@drawable/bg_edit_text"
+                                android:textColor="@android:color/black"
+                                android:textSize="15sp"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
-                            android:text="Email : "
-                            android:gravity="center_horizontal"
-                            android:textAllCaps="true"
-                            android:background="@drawable/back_btn_bg"
-                            android:textColor="@android:color/white"
-                            android:textSize="15sp"
-                            android:layout_weight="1.5"
-                            />
-                        <EditText
-                            android:gravity="center_horizontal"
-                            android:id="@+id/Email_EDITTEXT"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
-                            android:editable="false"
-                            android:layout_weight="1"
-                            android:text="Email : "
+
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:textColor="@android:color/black"
-                            />
+                            android:textColorHint="@android:color/black"
+                            app:hintTextAppearance="@style/TextLabel"
 
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
-                            android:text="@string/dob"
-                            android:background="@drawable/back_btn_bg"
-                            android:textAllCaps="true"
-                            android:gravity="center_horizontal"
-                            android:textColor="@android:color/white"
-                            android:textSize="15sp"
-                            android:layout_weight="0.1"
-                            />
-                        <EditText
-                            android:gravity="center_horizontal"
-                            android:id="@+id/dob_EDITTEXT"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:editable="false"
-                            android:fontFamily="sans-serif-light"
-                            android:text="@string/dob"
-                            android:textColor="@android:color/black" />
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+
+                                android:id="@+id/email_tf_edit_profile"
+                                android:hint="@string/email"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_marginTop="5dp"
+                                android:inputType="textEmailAddress"
+
+                                android:fontFamily="sans-serif-light"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
+                                android:background="@drawable/bg_edit_text"
+                                android:textColor="@android:color/black"
+                                android:textSize="15sp"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/back_btn_bg"
-                            android:fontFamily="sans-serif-light"
-                            android:text="Cell No : "
-                            android:textAllCaps="true"
-                            android:gravity="center_horizontal"
-                            android:textColor="@android:color/white"
-                            android:textSize="15sp"
-                            android:layout_weight="1.5"
-                            />
-                        <EditText
-                            android:gravity="center_horizontal"
-                            android:layout_weight="1"
-                            android:id="@+id/cell_no_EDITTEXT"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
-                            android:text="Cell No : "
+
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:textColor="@android:color/black"
-                            />
+                            android:textColorHint="@android:color/black"
+                            app:hintTextAppearance="@style/TextLabel"
 
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+
+                                android:id="@+id/dob_tf_edit_profile"
+                                android:hint="@string/dob"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_marginTop="5dp"
+                                android:inputType="textEmailAddress"
+
+                                android:fontFamily="sans-serif-light"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
+                                android:background="@drawable/bg_edit_text"
+                                android:textColor="@android:color/black"
+                                android:textSize="15sp"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
-                            android:text="@string/education"
-                            android:textAllCaps="true"
-                            android:background="@drawable/back_btn_bg"
-                            android:gravity="center_horizontal"
-                            android:textColor="@android:color/white"
-                            android:textSize="15sp"
-                            android:layout_weight="1.5"
-                            />
 
-                        <EditText
-                            android:gravity="center_horizontal"
-                            android:layout_weight="1"
-                            android:id="@+id/education_EDITTEXT"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
-                            android:text="@string/education"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:textColor="@android:color/black"
-                            />
+                            android:textColorHint="@android:color/black"
+                            app:hintTextAppearance="@style/TextLabel"
+
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+
+                                android:id="@+id/contact_number_tf_edit_profile"
+                                android:hint="@string/cell"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_marginTop="5dp"
+                                android:inputType="textEmailAddress"
+
+                                android:fontFamily="sans-serif-light"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
+                                android:background="@drawable/bg_edit_text"
+                                android:textColor="@android:color/black"
+                                android:textSize="15sp"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="@android:color/black"
+                            app:hintTextAppearance="@style/TextLabel"
+
+                            >
+
+                            <com.google.android.material.textfield.TextInputEditText
+
+                                android:id="@+id/education_tf_edit_profile"
+                                android:hint="@string/education"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_marginTop="5dp"
+                                android:inputType="textEmailAddress"
+
+                                android:fontFamily="sans-serif-light"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
+                                android:background="@drawable/bg_edit_text"
+                                android:textColor="@android:color/black"
+                                android:textSize="15sp"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+
                     </LinearLayout>
 
-                </LinearLayout>
 
+                </ScrollView>
             </LinearLayout>
-
             <LinearLayout
                 android:layout_below="@+id/linlay1"
                 android:layout_width="match_parent"
@@ -243,8 +253,8 @@
                     android:background="@drawable/btn_bg"
                     android:clickable="true"
                     android:fontFamily="sans-serif-medium"
-                    android:paddingLeft="45dp"
-                    android:paddingRight="45dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
                     android:text="@string/cancel"
                     android:layout_marginRight="10dp"
                     android:textAllCaps="false"
@@ -260,8 +270,8 @@
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/btn_bg"
                     android:fontFamily="sans-serif-medium"
-                    android:paddingLeft="50dp"
-                    android:paddingRight="55dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
                     android:text="@string/save"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"

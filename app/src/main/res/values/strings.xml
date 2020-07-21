@@ -86,6 +86,8 @@
     <string name="name">Name :</string>
     <string name="dob">Date of Birth :</string>
     <string name="cnic">CNIC :</string>
+    <string name="email">Email : </string>
+    <string name="cell">Contact Number :</string>
     <string name="education">Education :</string>
     <string name="cancel">Cancel</string>
     <string name="save">Save </string>
@@ -98,4 +100,9 @@
     <string name="edit_target">Edit Target</string>
     <string name="add_edit_targets"><![CDATA[Add & Edit targets]]></string>
     <string name="click_to_add_edit_targets"><![CDATA[Click to add & edit targets]]></string>
+
+    <!--SharedPreferences.-->
+    <string name="SharedPreferences_FileName">com.example.Admin.profileData</string>
+    <string name="SharedPreferences_Admin">AdminEmail</string>
+    <string name="SharedPreferences_isProfileDataComplete">isProfileDataComplete</string>
 </resources>

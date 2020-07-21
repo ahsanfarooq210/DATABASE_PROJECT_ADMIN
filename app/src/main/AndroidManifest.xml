@@ -38,19 +38,19 @@
         </receiver>
 
         <activity
-            android:name=".ProfileActivities.notification_Activity"
+            android:name=".ProfileActivities.Activities.notification_Activity"
             android:label=""
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ProfileActivities.setting_activity"
+            android:name=".ProfileActivities.Activities.setting_activity"
             android:label=""
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ProfileActivities.activity_Edit_Profile"
+            android:name=".ProfileActivities.Activities.activity_Edit_Profile"
             android:label=""
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ProfileActivities.activity_View_Profile"
+            android:name=".ProfileActivities.Activities.activity_View_Profile"
             android:label=""
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

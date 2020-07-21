@@ -1,4 +1,4 @@
-package com.example.database_project_admin.ProfileActivities;
+package com.example.database_project_admin.ProfileActivities.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
