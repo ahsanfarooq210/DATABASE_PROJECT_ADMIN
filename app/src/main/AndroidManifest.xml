@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service android:name=".Services.TargetStatus"/>
         <activity android:name=".Activities.Show_salesman_activity" />
         <activity
             android:name=".Target.activities.target_details_activity"
