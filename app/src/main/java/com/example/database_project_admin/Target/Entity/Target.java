@@ -10,11 +10,11 @@ public class Target {
    String salesmenEmail;
    String startDateString ,endDateString;
    String skuID;
-
+String targetStatus;
     public Target() {
     }
 
-    public Target(String TARGET_ID, Sku SKU,String skuID,String salesmenEmail, int TARGET, String startDateString ,String endDateString) {
+    public Target(String TARGET_ID, Sku SKU,String skuID,String salesmenEmail, int TARGET, String startDateString ,String endDateString ,String targetStatus) {
         this.TARGET_ID = TARGET_ID;
         this.SKU = SKU;
         this.TARGET = TARGET;
@@ -22,7 +22,24 @@ public class Target {
         this.salesmenEmail=salesmenEmail;
         this.startDateString = startDateString ;
         this.endDateString =endDateString;
+        this.targetStatus=targetStatus;
 
+    }
+
+    public String getSkuID() {
+        return skuID;
+    }
+
+    public void setSkuID(String skuID) {
+        this.skuID = skuID;
+    }
+
+    public String getTargetStatus() {
+        return targetStatus;
+    }
+
+    public void setTargetStatus(String targetStatus) {
+        this.targetStatus = targetStatus;
     }
 
     public String getSalesmenEmail() {

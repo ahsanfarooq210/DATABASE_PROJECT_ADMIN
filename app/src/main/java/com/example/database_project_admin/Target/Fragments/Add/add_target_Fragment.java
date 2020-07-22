@@ -340,7 +340,7 @@ salesmenSpinner.setOnTouchListener(new View.OnTouchListener() {
                     progressBar.setVisibility(View.VISIBLE);
                     String id = targetReference.push().getKey();
 
-                    Target target = new Target(id, sku, sku.getId(), salesmanId.getEmail(), add_target, startDateString, endDateString);
+                    Target target = new Target(id, sku, sku.getId(), salesmanId.getEmail(), add_target, startDateString, endDateString,"");
                     if (id != null) {
                         targetReference.child(id).setValue(target);
                         add_target_et.setText("");
