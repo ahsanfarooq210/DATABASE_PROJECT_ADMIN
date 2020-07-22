@@ -212,7 +212,7 @@ TextView id;
                        targetlist.clear();
                        for (DataSnapshot target : dataSnapshot.getChildren())
                        {
-                           if(target.getValue(Target.class).getskuID().equals(skuSelected.getId()))
+                           if(target.getValue(Target.class).getSkuID().equals(skuSelected.getId()))
                            {
                                targetlist.add(target.getValue(Target.class));
                            }
