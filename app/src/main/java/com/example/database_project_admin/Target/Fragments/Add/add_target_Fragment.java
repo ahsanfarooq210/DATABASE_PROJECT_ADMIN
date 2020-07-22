@@ -338,30 +338,27 @@ salesmenSpinner.setOnTouchListener(new View.OnTouchListener() {
                         return;
                     }
                     progressBar.setVisibility(View.VISIBLE);
-                    String id = targetReference.push().getKey();
+                    String targetID = targetReference.push().getKey();
+                    String skuID=sku.getId();
+                    String status="Active";
+                    Target target = new Target(targetID, sku, skuID, salesmanId.getEmail(), add_target, startDateString, endDateString,status);
+                    if (targetID != null) {
+                        targetReference.child(targetID).setValue(target);
 
-                    Target target = new Target(id, sku, sku.getId(), salesmanId.getEmail(), add_target, startDateString, endDateString,"");
-                    if (id != null) {
-                        targetReference.child(id).setValue(target);
-                        add_target_et.setText("");
                     } else {
                         Toast.makeText(getContext(),
                                 "Error \n string id=null \n contact developer immediately",
                                 Toast.LENGTH_SHORT).show();
                     }
 
-                    range_button=false;
-                    spinner_salesmen=false;
-                    spinner_sku=false;
+                    add_target_et.setText("");
                     skuSpinner.setSelection(0);
                     salesmenSpinner.setSelection(0);
                     spinner_sku=false;
                     spinner_salesmen=false;
                     progressBarh.postDelayed(runnable1, 500);
-                    rellay1.setVisibility(View.GONE);
-                    rellay2.setVisibility(View.GONE);
-                    rally3.setVisibility(View.GONE);
-                    handler.postDelayed(runnable, 500);
+                  Toast.makeText(getContext(),"Target Set Successfully ",Toast.LENGTH_LONG).show();
+
                 }
             }
         });
@@ -419,7 +416,7 @@ return  view;
     @Override
     public void onStart() {
         super.onStart();
-/*targetReference.addValueEventListener(new ValueEventListener() {
+targetReference.addValueEventListener(new ValueEventListener() {
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
         targetList.clear();
@@ -433,7 +430,7 @@ return  view;
     public void onCancelled(@NonNull DatabaseError databaseError) {
 
     }
-});*/
+});
            skuReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -10,7 +10,7 @@ public class Target {
    String salesmenEmail;
    String startDateString ,endDateString;
    String skuID;
-String targetStatus;
+    String targetStatus;
     public Target() {
     }
 
