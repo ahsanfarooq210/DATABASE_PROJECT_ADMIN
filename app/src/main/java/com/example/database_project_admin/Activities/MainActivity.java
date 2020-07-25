@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity
         {
             username=prefreences.getString(getString(R.string.SharedPreferences_AdminEmail),"");
             passsword=prefreences.getString(getString(R.string.SharedPreferences_AdminPassword),"");
+            whereTo();
         }
     }
 

@@ -77,10 +77,15 @@ public class setting_activity extends AppCompatActivity {
     private DatabaseReference profileDataReference;
     //array lists for the array adapters
     private List<ProfileData> profileDataList;
+    FirebaseUser user;
+     FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_activity);
+        auth= FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
         prefreences = getSharedPreferences(getResources().getString(R.string.SharedPreferences_FileName),MODE_PRIVATE);
         adminEmail=prefreences.getString(getResources().getString(R.string.SharedPreferences_AdminEmail),"");
 
@@ -204,9 +209,7 @@ public class setting_activity extends AppCompatActivity {
 
     private void changePassword() {
         String userEmail=username_tf_setting.getText().toString().trim();
-        final FirebaseUser user;
-        final FirebaseAuth auth= FirebaseAuth.getInstance();
-        user = auth.getCurrentUser();
+
         final String email = user.getEmail();
         if(!userEmail.equals(email))
         {
@@ -247,7 +250,7 @@ public class setting_activity extends AppCompatActivity {
 
                             }else {
                                 Toast.makeText(setting_activity.this,"Password Successfully Modified",Toast.LENGTH_LONG).show();
-                                auth.getInstance().signOut();
+
                                 progressBar.setVisibility(View.VISIBLE);
 
                                 String profileId=profileDataList.get(0).getProfileDataID();
@@ -256,12 +259,12 @@ public class setting_activity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = getSharedPreferences(getResources().getString(R.string.SharedPreferences_FileName),MODE_PRIVATE).edit();
                                 editor.putString(getResources().getString(R.string.SharedPreferences_AdminEmail),"");
                                 editor.putString(getString(R.string.SharedPreferences_AdminPassword),"");
-                                editor.putBoolean(getResources().getString(R.string.SharedPreferences_isProfileDataComplete),true);
-                                editor.apply();
+                                editor.putBoolean(getResources().getString(R.string.SharedPreferences_isProfileDataComplete),false);
+                                editor.commit();
                                 Handler logoutHandler=new Handler();
                                 logoutHandler.postDelayed(logout,2000);
-                                       Intent intent =new Intent(setting_activity.this,MainActivity.class);
-                                       startActivity(intent);
+                                    auth.getInstance().signOut();
+
 
                             }
                         }
@@ -323,7 +326,7 @@ public class setting_activity extends AppCompatActivity {
         public void run()
         {
             progressBarh.postDelayed(runnable1,0);
-            Intent intent=new Intent(setting_activity.this, admin_main_dashboard.class);
+            Intent intent=new Intent(setting_activity.this, MainActivity.class);
             startActivity(intent);
         }
     };
@@ -349,5 +352,10 @@ public class setting_activity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }
