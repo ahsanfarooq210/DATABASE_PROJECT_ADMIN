@@ -249,6 +249,7 @@ public class setting_activity extends AppCompatActivity {
                                 Toast.makeText(setting_activity.this,"Password Successfully Modified",Toast.LENGTH_LONG).show();
                                 auth.getInstance().signOut();
                                 progressBar.setVisibility(View.VISIBLE);
+
                                 String profileId=profileDataList.get(0).getProfileDataID();
                                 profileDataReference.child(profileId).child("password").setValue(newpasswpod);
                                 // activity_Edit_Profile
