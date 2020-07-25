@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sku_imgView_logo"
-            android:visibility="visible">
+            android:visibility="gone">
             <TextView
                 android:id="@+id/target_sku_textView"
                 android:layout_width="wrap_content"

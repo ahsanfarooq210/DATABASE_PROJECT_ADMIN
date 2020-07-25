@@ -103,6 +103,7 @@
 
     <!--SharedPreferences.-->
     <string name="SharedPreferences_FileName">com.example.Admin.profileData</string>
-    <string name="SharedPreferences_Admin">AdminEmail</string>
+    <string name="SharedPreferences_AdminEmail">AdminEmail</string>
+    <string name="SharedPreferences_AdminPassword">AdminPassword</string>
     <string name="SharedPreferences_isProfileDataComplete">isProfileDataComplete</string>
 </resources>

@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity
     //array lists for the array adapters
     private List<ProfileData> profileDataList;
     SharedPreferences prefreences ;
+    boolean found=false;
     String username,passsword;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -70,9 +71,14 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
+
         prefreences = getSharedPreferences(getResources().getString(R.string.SharedPreferences_FileName),MODE_PRIVATE);
+
+        found=prefreences.getBoolean(getString(R.string.SharedPreferences_isProfileDataComplete),false);
 //initializing databasee reference for downloading and uploading the data the data
-            profileDataReference = FirebaseDatabase.getInstance().getReference("AdminProfileData");
+
+        profileDataReference = FirebaseDatabase.getInstance().getReference("AdminProfileData");
+
         profileDataReference.keepSynced(true);
         profileDataList=new ArrayList<>();        emailet=findViewById(R.id.username_tf);
         passwordet=findViewById(R.id.password_tf);
@@ -85,6 +91,12 @@ public class MainActivity extends AppCompatActivity
 
         progressBar=findViewById(R.id.my_progress_bar);
         progressBarh.postDelayed(runnable1,100);
+
+        if (mAuth.getCurrentUser()!=null)
+        {
+            username=prefreences.getString(getString(R.string.SharedPreferences_AdminEmail),"");
+            passsword=prefreences.getString(getString(R.string.SharedPreferences_AdminPassword),"");
+        }
     }
 
     public void loginButton(View view)
@@ -103,8 +115,9 @@ public class MainActivity extends AppCompatActivity
             return;
         }
 
-        String username=emailet.getText().toString().trim(),password=passwordet.getText().toString().trim();
-        signIn(username,password);
+         username=emailet.getText().toString().trim();
+                 passsword=passwordet.getText().toString().trim();
+        signIn(username,passsword);
     }
 
     public void signIn(String email,String password)
@@ -135,10 +148,11 @@ public class MainActivity extends AppCompatActivity
     }
     private void whereTo() {
 
-        boolean found=false;
+
         for (int i=0; i<profileDataList.size();i++)
         {
             if(profileDataList.get(i).getEmail().equals(username))
+
             {
                 found=true;
                 break;
@@ -147,19 +161,23 @@ public class MainActivity extends AppCompatActivity
         if (!found) {
             // activity_Edit_Profile
             SharedPreferences.Editor editor = getSharedPreferences(getResources().getString(R.string.SharedPreferences_FileName),MODE_PRIVATE).edit();
-            editor.putString(getResources().getString(R.string.SharedPreferences_Admin),username);
+            editor.putString(getResources().getString(R.string.SharedPreferences_AdminEmail),username);
+            editor.putString(getString(R.string.SharedPreferences_AdminPassword),passsword);
             editor.putBoolean(getResources().getString(R.string.SharedPreferences_isProfileDataComplete),false);
-            editor.commit();
+            editor.apply();
+            String emai=prefreences.getString(getString(R.string.SharedPreferences_AdminEmail),"");
             Intent edit_profile=new Intent(MainActivity.this, activity_Edit_Profile.class);
             progressBarh.postDelayed(runnable1, 100);
             startActivity(edit_profile);
-        } else {
+        }
+        if(found){
             Intent intent = new Intent(MainActivity.this,admin_main_dashboard.class);
             // activity_Edit_Profile
             SharedPreferences.Editor editor = getSharedPreferences(getResources().getString(R.string.SharedPreferences_FileName),MODE_PRIVATE).edit();
-            editor.putString(getResources().getString(R.string.SharedPreferences_Admin),username);
+            editor.putString(getResources().getString(R.string.SharedPreferences_AdminEmail),username);
+            editor.putString(getString(R.string.SharedPreferences_AdminPassword),passsword);
             editor.putBoolean(getResources().getString(R.string.SharedPreferences_isProfileDataComplete),true);
-            editor.commit();
+            editor.apply();
             progressBarh.postDelayed(runnable1, 100);
             startActivity(intent);
         }
@@ -174,8 +192,12 @@ public class MainActivity extends AppCompatActivity
                 for (DataSnapshot profile : dataSnapshot.getChildren()) {
                     profileDataList.add(profile.getValue(ProfileData.class));
                 }
-            }
 
+                    if (mAuth.getCurrentUser() != null) {
+                        whereTo();
+
+                }
+            }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

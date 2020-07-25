@@ -74,7 +74,7 @@
                             android:background="#CCC" />
 
                         <include
-
+android:visibility="gone"
                             layout="@layout/change_text_size_expandable_layout" />
 
                         <View
@@ -85,7 +85,7 @@
                             />
 
                         <include layout="@layout/change_font_expandable_layout"
-                            />
+                            android:visibility="gone"/>
 
                     </com.github.florent37.expansionpanel.viewgroup.ExpansionsViewGroupLinearLayout>
 

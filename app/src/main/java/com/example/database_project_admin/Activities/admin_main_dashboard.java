@@ -13,6 +13,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
 import android.os.Build;
@@ -36,6 +37,7 @@ import com.example.database_project_admin.ProfileActivities.Activities.setting_a
 
 import com.example.database_project_admin.R;
 import com.example.database_project_admin.Target.activities.add_target_activity;
+import com.example.database_project_admin.Target.activities.target_details_activity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -65,7 +67,7 @@ public class admin_main_dashboard extends AppCompatActivity
     // flag to load home fragment when user presses back key
     private boolean shouldLoadHomeFragOnBackPress = true;
     private Handler mHandler;
-
+    private FirebaseAuth mAuth;
 
     private ScrollView scrollView;
     private Handler handler=new Handler();
@@ -81,7 +83,7 @@ public class admin_main_dashboard extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main_dashboard);
-
+        mAuth = FirebaseAuth.getInstance();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -290,9 +292,16 @@ public void onBackPressed() {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            FirebaseAuth.getInstance().signOut();
-            Intent intent=new Intent(admin_main_dashboard.this, MainActivity.class);
+           mAuth.getInstance().signOut();
+            SharedPreferences.Editor editor = getSharedPreferences(getResources().getString(R.string.SharedPreferences_FileName),MODE_PRIVATE).edit();
+            editor.putString(getResources().getString(R.string.SharedPreferences_AdminEmail),"");
+            editor.putString(getString(R.string.SharedPreferences_AdminPassword),"");
+            editor.putBoolean(getResources().getString(R.string.SharedPreferences_isProfileDataComplete),false);
+            editor.commit();
+            editor.apply();
+               Intent intent=new Intent(admin_main_dashboard.this, MainActivity.class);
             startActivity(intent);
+
             return true;
         }
 
@@ -407,11 +416,8 @@ public void onBackPressed() {
     }
     public void targetDetails(View view)
 {
-    Toast.makeText(admin_main_dashboard.this,"Coming soon",Toast.LENGTH_LONG).show();
-   // startActivity(new Intent(admin_main_dashboard.this, target_details_activity.class));
-}public void editOrder(View view)
-{
-   // startActivity(new Intent(admin_main_dashboard.this,target_details_activity.class));
+
+    startActivity(new Intent(admin_main_dashboard.this, target_details_activity.class));
 }
 
     public void showSalesman(View view)

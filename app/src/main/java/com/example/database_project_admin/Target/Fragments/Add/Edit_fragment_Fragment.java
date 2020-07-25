@@ -311,9 +311,10 @@ public class Edit_fragment_Fragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 targetList.clear();
-                for (DataSnapshot target : dataSnapshot.getChildren())
-                {
-                    targetList.add(target.getValue(Target.class));
+                for (DataSnapshot target : dataSnapshot.getChildren()) {
+                    if (target.getValue(Target.class).getTargetStatus().equals("Active")) {
+                        targetList.add(target.getValue(Target.class));
+                    }
                 }
                 recyclerViewAdapter=new RecyclerViewAdapter(targetList, (Activity) getContext());
                 recyclerView.setAdapter(recyclerViewAdapter);

@@ -69,24 +69,101 @@
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="15sp" />
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="top|left"
+                        >
+                        <Spinner
+                            android:id="@+id/show_target_salesmen_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@drawable/et_bg"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="sans-serif-light"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:animateLayoutChanges="true"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp" />
 
-                    <Spinner
-                        android:id="@+id/show_target_salesmen_spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:background="@drawable/et_bg"
-                        android:layout_marginTop="10dp"
-                        android:fontFamily="sans-serif-light"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:animateLayoutChanges="true"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/white"
-                        android:textSize="15sp" />
+                        <!-- Fake TextView to use to set in an error state to allow an error to be shown for the TextView -->
+                        <android.widget.TextView
+                            android:id="@+id/show_target_salesman_spinner_Error"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_alignRight="@id/show_target_salesmen_spinner"
+                            android:layout_alignBottom="@id/show_target_salesmen_spinner"
+                            android:layout_marginTop="0dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="50dp"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            />
+
+                    </RelativeLayout>
+
 
 
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_margin="15dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Select SKU"
+                        android:id="@+id/id"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp" />
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="top|left"
+                        >
+                        <Spinner
+                            android:id="@+id/show_target_sku_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="@drawable/et_bg"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="sans-serif-light"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:animateLayoutChanges="true"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/white"
+                            android:textSize="15sp" />
+
+                        <!-- Fake TextView to use to set in an error state to allow an error to be shown for the TextView -->
+                        <android.widget.TextView
+                            android:id="@+id/show_target_sku_spinner_Error"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_alignRight="@id/show_target_sku_spinner"
+                            android:layout_alignBottom="@id/show_target_sku_spinner"
+                            android:layout_marginTop="0dp"
+                            android:paddingTop="0dp"
+                            android:paddingRight="50dp"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            />
+
+                    </RelativeLayout>
+
+
+
+
+                </LinearLayout>
                 <Button
                     android:id="@+id/show_target_salesmen_button"
                     android:layout_width="wrap_content"
@@ -136,14 +213,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_horizontal">
+
                     <ProgressBar
                         android:id="@+id/circularProgressbar_specific_salesmen"
                         style="?android:attr/progressBarStyleHorizontal"
-                        android:indeterminate="false"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:indeterminate="false"
                         android:max="100"
-                        android:progress="70"
+                        android:progress="0"
                         android:progressDrawable="@drawable/custom_progressbar_target"
                         android:secondaryProgress="100" />
 
@@ -152,7 +230,7 @@
                         android:layout_width="250dp"
                         android:layout_height="250dp"
                         android:gravity="center"
-                        android:text="70%"
+                        android:text="0%"
                         android:layout_centerInParent="true"
                         android:textColor="@color/colorPrimaryDark"
                         android:textSize="20sp" />

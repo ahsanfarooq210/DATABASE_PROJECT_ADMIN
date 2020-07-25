@@ -11,18 +11,27 @@ public class ProfileData {
     String cell_number;
     String Education;
 
+    String password;
     public ProfileData() {
     }
 
-    public ProfileData(String profileDataID, String name, String CNIC, String email, String date_of_birth, String cell_number, String education) {
+    public ProfileData(String profileDataID, String name, String CNIC, String email, String date_of_birth, String cell_number, String education,String password) {
         this.profileDataID = profileDataID;
-
+this.password=password;
         this.name = name;
         this.CNIC = CNIC;
         this.email = email;
         this.Date_of_birth = date_of_birth;
         this.cell_number = cell_number;
         this.Education = education;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getProfileDataID() {
