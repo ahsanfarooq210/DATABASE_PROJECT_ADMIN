@@ -416,9 +416,7 @@ public void onBackPressed() {
     }
     public void targetDetails(View view)
 {
-
-
-
+    //here
     startActivity(new Intent(admin_main_dashboard.this, target_details_activity.class));
 }
 
