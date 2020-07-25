@@ -161,7 +161,7 @@ boolean show_target_sku_spinner=false;
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                  show_target_sku_spinner= true;
-                return true;
+                return false;
             }
         });
         skuSpinnerSelectedListener = new AdapterView.OnItemSelectedListener() {
